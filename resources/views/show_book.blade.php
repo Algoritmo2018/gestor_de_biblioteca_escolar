@@ -29,8 +29,12 @@
       <strong>Descrição:</strong> {{$book->content}}</p>
 
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar com grupos de botões">
-        <div><a href="" class="btn btn-success">Emprestar</a></div>
-      </div>
+        <div><a href="" class="btn btn-success">Emprestar</a><a href="{{route('edit.book',$book->id)}}" class="btn btn-primary ms-2 me-2">Editar</a></div>
+        <form   action="{{route('destroy.book',$book->id)}}" method="POST">    @csrf
+            @method('DELETE')
+            <input type="hidden" class="form-control" name="image_path" id="validationDefaultUsername" value="{{$book->image_path}}"   aria-describedby="inputGroupPrepend2" >
+           <a onclick="event.preventDefault();
+            this.closest('form').submit();" class="btn btn-danger">Eliminar</a></form> </div>
 
 
 

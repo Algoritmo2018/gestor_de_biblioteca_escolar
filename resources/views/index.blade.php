@@ -17,7 +17,9 @@
 <!--Navbar-->
 @include('partials/navbar')
 <!--fim Navbar-->
-
+ <!--Message success-->
+ @include('partials/message')
+ <!--fim message success-->
 <!--Menu de links-->
 <div class="container mt-4">
 

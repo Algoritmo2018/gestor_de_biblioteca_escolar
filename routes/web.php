@@ -26,7 +26,6 @@ Route::get('/', function () {
 
 
 Route::get('/index', [HomeController::class, 'index'])->name('show.home');
-Route::get('/show/book/{id}', [BookController::class, 'show'])->name('show.book');
 
 Route::get('/create/category', [CategoryController::class, 'create'])->name('create.category');
 Route::post('/store/category', [CategoryController::class, 'store'])->name('store.category');
@@ -64,6 +63,7 @@ Route::post('/store/book', [BookController::class, 'store'])->name('store.book')
 
 Route::get('/edit/book/{id}', [BookController::class, 'edit'])->name('edit.book');
 
+Route::get('/show/book/{id}', [BookController::class, 'show'])->name('show.book');
 
 Route::put('/{id}/update/book/', [BookController::class, 'update'])->name('update.book');
 

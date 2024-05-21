@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <title>Editando Editora</title>
+    <title>Cadastrando Editora</title>
     <!--links-->
 @include('partials/links')
 <!--fim links-->
