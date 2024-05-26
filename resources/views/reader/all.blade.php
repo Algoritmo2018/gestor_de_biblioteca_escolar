@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <title>autores</title>
+    <title>Leitores</title>
     <!--links-->
 @include('partials/links')
 <!--fim links-->
@@ -23,6 +23,7 @@
 
 
         <div class="main">
+            @include('partials/nav')
 
 
 
@@ -35,7 +36,7 @@
                         <div class="col-md-12 mb-1">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="course"
-                                    id="validationDefaultUsername" placeholder="Ex: arte"  aria-describedby="inputGroupPrepend2" >
+                                    id="validationDefaultUsername" placeholder="Ex: Luis"  aria-describedby="inputGroupPrepend2" >
                     <button class="btn btn-primary" type="submit">Pesquisar</button>
                             </div>
                         </div>
@@ -46,23 +47,29 @@
              @include('partials/message')
              <!--fim message success-->
             <div class="card-body">
-
+<h5>Leitores</h5>
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Categorias</th>
+                    <th scope="col">Nome</th>
 
-                    <th scope="col"> </th>
-                    <th scope="col"> </th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Contacto</th>
+                    <th scope="col">Residencia</th>
+                    <th> </th>
+                    <th> </th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($author as $author)
+                    @foreach ($reader as $reader)
                   <tr>
 
-                    <td>{{$author->author}}</td>
-                    <td><a href="{{route('edit.author', $author->id)}}" class="text-primary">Editar</a></td>
-                    <td><form action="{{ route('destroy.author', $author->id) }}" method="POST">
+                    <td>{{$reader->name}}</td>
+                    <td>{{$reader->email}}</td>
+                    <td>{{$reader->contact}}</td>
+                    <td>{{$reader->residence}}</td>
+                    <td><a href="{{route('edit.reader', $reader->id)}}" class="text-primary">Editar</a></td>
+                    <td><form action="{{ route('destroy.reader', $reader->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <a  onclick="event.preventDefault();

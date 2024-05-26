@@ -1,13 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthorController;
-use App\Http\Controllers\BookController;
+use App\Http\Controllers\ReaderController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PublishingCompanyController;
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,8 +21,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
+
 
 
 
@@ -85,3 +87,30 @@ Route::put('/{id}/update/publishing_company/', [PublishingCompanyController::cla
 Route::delete('/{id}/destroy/publishing_company/', [PublishingCompanyController::class, 'destroy'])->name('destroy.publishing_company');
 
 Route::get('/all/publishing_company', [PublishingCompanyController::class, 'all'])->name('all.publishing_company');
+
+
+
+Route::get('/create/reader', [ReaderController::class, 'create'])->name('create.reader');
+Route::post('/store/reader', [ReaderController::class, 'store'])->name('store.reader');
+
+
+Route::get('/edit/reader/{id}', [ReaderController::class, 'edit'])->name('edit.reader');
+
+
+Route::put('/{id}/update/reader/', [ReaderController::class, 'update'])->name('update.reader');
+
+Route::delete('/{id}/destroy/reader/', [ReaderController::class, 'destroy'])->name('destroy.reader');
+
+Route::get('/all/reader', [ReaderController::class, 'all'])->name('all.reader');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

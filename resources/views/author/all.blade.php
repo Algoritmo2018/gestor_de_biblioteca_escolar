@@ -23,6 +23,7 @@
 
 
         <div class="main">
+            @include('partials/nav')
 
 
 
