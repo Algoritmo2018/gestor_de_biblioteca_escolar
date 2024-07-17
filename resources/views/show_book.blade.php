@@ -20,13 +20,15 @@
 
   <main class="mt-3">
     <div class="container d-flex flex-column  align-items-center">
-      <img src="{{asset('storage/img/book_cap/'.$book->image_path)}}"  style="height: 80px" alt="" class="img-fluid rounded  text-center h-25 w-25" >
+      <img src="{{asset('storage/img/book_cap/'.$book->image_path)}}"  style="height: 200px" alt="" class="img-fluid rounded  text-center w-20" >
       <h4 class="mt-2">{{$book->title}}</h4>
       <small><strong>Autor:</strong> {{$book->author->author}}</small>
       <small><strong>Editora:</strong> {{$book->publishing_company->publishing_company}}</small>
             <small ><strong>Categoria:</strong>{{ucfirst($book->category->category)}}</small>
+            <small><strong>Ano de publicação:</strong> {{
+                $book->number_of_copies}}</small>
+            <small><strong>Copias/Examples:</strong> {{$book->year_of_publication}}</small>
 <p class="tex-right">
-      <strong>Descrição:</strong> {{$book->content}}</p>
 
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar com grupos de botões">
         <div><a href="" class="btn btn-success">Emprestar</a><a href="{{route('edit.book',$book->id)}}" class="btn btn-primary ms-2 me-2">Editar</a></div>

@@ -82,10 +82,23 @@
                   @endforeach
                 </select>
               </div>
-            <div class="form-floating mt-3"><textarea class="form-control mb-2" name="content" id="msg" style="height: 100px;"
-              placeholder=" " cols="30" rows="10"></textarea>
-          <label for="msg">Resumo sobre o livro:</label>
-      </div>
+              <div class="col-md-12 mb-3">
+                <label for="validationDefaultUsername">Ano de publicação</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend2">A</span>
+                  </div>
+                  <input type="number" class="form-control" name="year_of_publication" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
+                </div>
+              </div> <div class="col-md-12 mb-3">
+                <label for="validationDefaultUsername">Nº Copias/Examples</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend2">C/E</span>
+                  </div>
+                  <input type="number" class="form-control" name="number_of_copies" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
+                </div>
+              </div>
       <div class="col-md-12 mb-3">
         <label for="validationDefaultUsername">Capa</label>
         <div class="input-group">
@@ -95,6 +108,7 @@
           </div>
 
 
+          <button class="btn btn-danger" type="button">Cancelar</button>
         <button class="btn btn-primary" type="submit">Guardar</button>
     </form></div>
 

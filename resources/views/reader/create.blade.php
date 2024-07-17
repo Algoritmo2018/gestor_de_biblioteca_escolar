@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <title>Cadastrar Leitor</title>
+    <title>Editando Estudante</title>
     <!--links-->
 @include('partials/links')
 <!--fim links-->
@@ -35,7 +35,7 @@
 
     <form action="{{route('store.reader')}}" method="POST" enctype="multipart/form-data">
         @csrf
-      <h4>Cadastrar Leitor</h4>
+      <h4>Editando Estudante</h4>
       <hr class="mb-3">
       <div class="form-floating">
 
@@ -49,6 +49,31 @@
           </div>
         </div>
 
+        <div class="col-md-12 mb-3">
+            <label for="validationDefaultUsername">Tipo de estudante</label>
+            <div class="input-group">
+              <select name="" id="cidade" class="form-select" placeholder=" ">
+                <option value="">Interno</option>
+                <option value="">Externo</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="validationDefaultUsername">Curso</label>
+            <div class="input-group">
+              <select name="" id="cidade" class="form-select" placeholder=" ">
+                <option value="">Eng. Informatica</option>
+                <option value="">Eng. de Redes</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="validationDefaultUsername">BI</label>
+            <div class="input-group">
+
+              <input type="text" class="form-control" name="name" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
+            </div>
+          </div>
         <div class="col-md-12 mb-3">
             <label for="validationDefaultUsername">Email</label>
             <div class="input-group">
@@ -80,7 +105,8 @@
           </div>
 
 
-        <button class="btn btn-primary" type="submit">Guardar</button>
+
+          <button class="btn btn-danger" type="button">Cancelar</button> <button class="btn btn-primary" type="submit">Guardar</button>
     </form></div>
 
 

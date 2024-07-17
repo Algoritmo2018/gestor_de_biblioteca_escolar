@@ -34,19 +34,21 @@
 
     <form action="{{route('store.publishing_company')}}" method="POST">
         @csrf()
-    <h4>Cadastrar Editora</h4>
+    <h4>Cadastrando Editora</h4>
     <hr class="mb-3">
     <div class="form-floating">
 
       <div class="col-md-12 mb-3">
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupPrepend2">C</span>
+            <span class="input-group-text" id="inputGroupPrepend2">E</span>
           </div>
           <input type="text" class="form-control" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" name="publishing_company" value="{{old('publishing_company')}}" required>
         </div>
       </div>
         </div>
+
+        <button class="btn btn-danger" type="button">Cancelar</button>
       <button class="btn btn-primary" type="submit">Guardar</button>
   </form></div>
   <!--fim Formulario de cadastro-->

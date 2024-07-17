@@ -1,4 +1,4 @@
-<footer   class="border-top text-bg-dark">
+<footer   class="border-top text-bg-primary">
     <div class="container">
         <div class="row py-3">
             <div class="col-12 col-md-4 text-center">
@@ -6,7 +6,7 @@
                 Rua Virtual Inexistente, 171, Compulândia/PC <br>
                 CPNJ 99.999.999/0001-99
             </div>
-            <div class="col-12 col-md-4 text-center text-bg-dark">
+            <div class="col-12 col-md-4 text-center text-bg-primary">
                 <a href="privacidade.html" class="text-decoration-none text-white">
                     Política de Privacidade
                 </a><br>
@@ -17,7 +17,7 @@
                     Quem Somos
                 </a>
             </div>
-            <div class="col-12 col-md-4 text-center text-bg-dark">
+            <div class="col-12 col-md-4 text-center text-bg-primary">
                 <a href="/contato.html" class="text-decoration-none text-white">
                     Contato pelo Site
                 </a><br>

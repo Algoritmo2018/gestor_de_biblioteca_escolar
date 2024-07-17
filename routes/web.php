@@ -8,7 +8,10 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PublishingCompanyController;
+use App\Http\Controllers\StudentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,14 +23,12 @@ use App\Http\Controllers\PublishingCompanyController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 
 
-Route::get('/index', [HomeController::class, 'index'])->name('show.home');
+
+Route::get('/', [HomeController::class, 'index'])->name('show.home');
 
 Route::get('/create/category', [CategoryController::class, 'create'])->name('create.category');
 Route::post('/store/category', [CategoryController::class, 'store'])->name('store.category');
@@ -41,6 +42,36 @@ Route::put('/{id}/update/category/', [CategoryController::class, 'update'])->nam
 Route::delete('/{id}/destroy/category/', [CategoryController::class, 'destroy'])->name('destroy.category');
 
 Route::get('/all/category', [CategoryController::class, 'all'])->name('all.category');
+
+// Rotas do course
+Route::get('/create/course', [CourseController::class, 'create'])->name('create.course');
+Route::post('/store/course', [CourseController::class, 'store'])->name('store.course');
+
+
+Route::get('/edit/course/{id}', [CourseController::class, 'edit'])->name('edit.course');
+
+
+Route::put('/{id}/update/course/', [CourseController::class, 'update'])->name('update.course');
+
+Route::delete('/{id}/destroy/course/', [CourseController::class, 'destroy'])->name('destroy.course');
+
+Route::get('/all/course', [CourseController::class, 'all'])->name('all.course');
+
+
+// Rotas do student
+Route::get('/create/student', [StudentController::class, 'create'])->name('create.student');
+Route::post('/store/student', [StudentController::class, 'store'])->name('store.student');
+
+
+Route::get('/edit/student/{id}', [StudentController::class, 'edit'])->name('edit.student');
+
+
+Route::put('/{id}/update/student/', [StudentController::class, 'update'])->name('update.student');
+
+Route::delete('/{id}/destroy/student/', [StudentController::class, 'destroy'])->name('destroy.student');
+
+Route::get('/all/student', [StudentController::class, 'all'])->name('all.student');
+
 
 Route::get('/admin', [AdminController::class, 'index'])->name('show.admin');
 

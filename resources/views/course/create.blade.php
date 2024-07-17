@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <title>Cadastrando Autor</title>
+    <title>Cadastrando Curso</title>
     <!--links-->
 @include('partials/links')
 <!--fim links-->
@@ -32,9 +32,9 @@
                 <!-- Formulario de cadastro-->
   <div class="container d-flex justify-content-center mt-3 mb-2">
 
-    <form action="{{route('store.author')}}" method="POST">
+    <form action="{{route('store.course')}}" method="POST">
         @csrf()
-    <h4>Cadastrando Autor</h4>
+    <h4>Cadastrando Curso</h4>
     <hr class="mb-3">
     <div class="form-floating">
 
@@ -43,7 +43,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupPrepend2">C</span>
           </div>
-          <input type="text" class="form-control" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" name="author" value="{{old('author')}}" required>
+          <input type="text" class="form-control" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" name="course" value="{{old('course')}}" required>
         </div>
       </div>
         </div>

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->uuid('author_id')->index()->nullable();
             $table->uuid('category_id')->index()->nullable();
             $table->uuid('publishing_company_id')->index()->nullable();
-            $table->text('content');
+            $table->integer('number_of_copies');
+            $table->integer('year_of_publication');
             $table->text('image_path');
             $table->timestamps();
 

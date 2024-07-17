@@ -59,8 +59,8 @@
 
     @foreach ($book as $book)
     <div class="col" data-anima="esquerda">
-        <div class="card h-100">
-          <img src="{{asset('storage/img/book_cap/'.$book->image_path)}}" style="height: 150px" alt="" class="card-img-top">
+        <div class="card h-100 w-75">
+          <img src="{{asset('storage/img/book_cap/'.$book->image_path)}}" style="height: 150px"  alt="" class="card-img-top">
           <div class="card-body">
 
             <p class="card-text">{{$book->title}}</p>
@@ -74,7 +74,7 @@
 <!--Fim  Tecnologia-->
 
 <!--Menu de links-->
-<div class="container"><hr class="mt-3">
+<div class="container">
 
 <div class="row pb-3">
     <div class="col-12">
@@ -104,7 +104,7 @@
             </nav>
         </div>
     </div>
-</div><hr class="mt-1"></div>
+</div> </div>
 <!--Fim Menu de links-->
 <div class=" d-md-none d-lg-none d-sm-none d-block"  style="height: 250px;"></div>
 <div class="col-md d-sm-none d-lg-none d-md-block d-none"  style="height: 150px;"></div>

@@ -1,7 +1,7 @@
-<nav class="navbar bg-dark navbar-dark  navbar-expand-sm sticky-top">
+<nav class="navbar bg-primary navbar-dark  navbar-expand-sm sticky-top">
     <div class="container ">
       <a href="" class="navbar-brand d-flex align-items-center">
-        <i class="bi-newspaper fs-1 me-2"></i>Library</a>
+        <img src="{{asset('img/logo.png')}}" style="height: 30px" alt=""> </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar"><span
           class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse d-lg-flex flex-column" id="menuNavbar">
@@ -75,6 +75,9 @@
           <a href="#" class="text-white">Economia</a>
         </li>
         <li class="page-item mb-2">
+            <a href="#" class="text-white">Matemática</a>
+          </li>
+        <li class="page-item mb-2">
           <a href="#" class="text-white">Moda</a>
         </li>
         <li class="page-item mb-2">
@@ -84,9 +87,7 @@
         <li class="page-item mb-2">
           <a href="#" class="text-white">Tecnologia</a>
         </li>
-        <li class="page-item">
-          <a href="#" class="text-white">Regiões</a>
-        </li>
+
 
 
       </ul>

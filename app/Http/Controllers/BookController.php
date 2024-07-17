@@ -29,7 +29,8 @@ $publishing_company = $publishing_company->orderBy('publishing_company', 'asc')-
             'author_id' => $request->get('author'),
             'category_id' => $request->get('category'),
             'publishing_company_id' => $request->get('publishing_company'),
-            'content' => $request->get('content'),
+            'number_of_copies' => $request->get('number_of_copies'),
+            'year_of_publication' => $request->get('year_of_publication'),
             'image_path' => $request->file('image_path')->hashName(),
         ]);
         $image->save();
@@ -80,7 +81,8 @@ if (!empty($dados['image_path_new'])) {
      $book->author_id = $dados['author'];
      $book->category_id = $dados['category'];
      $book->publishing_company_id = $dados['publishing_company'];
-     $book->content = $dados['content'];
+     $book->number_of_copies = $dados['number_of_copies'];
+     $book->year_of_publication = $dados['year_of_publication'];
      $book->image_path = $request->file('image_path_new')->hashName();
      $book->save();
 } else {
@@ -91,7 +93,8 @@ if (!empty($dados['image_path_new'])) {
      $book->author_id = $dados['author'];
      $book->category_id = $dados['category'];
      $book->publishing_company_id = $dados['publishing_company'];
-     $book->content = $dados['content'];
+     $book->number_of_copies = $dados['number_of_copies'];
+     $book->year_of_publication = $dados['year_of_publication'];
      $book->save();
 }
 

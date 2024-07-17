@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <title>autores</title>
+    <title>Admin</title>
     <!--links-->
 @include('partials/links')
 <!--fim links-->
@@ -30,13 +30,13 @@
           <main class="content px-3 py-2">
             <div class="container d-flex  justify-content-center mt-3 mb-2">
 
-                <form action="{{ route('all.author') }}" method="GET">
+                <form action="{{ route('all.course') }}" method="GET">
                     @csrf
                     <div class="form-floating">
                         <div class="col-md-12 mb-1">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="course"
-                                    id="validationDefaultUsername" placeholder="Ex: Donald"  aria-describedby="inputGroupPrepend2" >
+                                    id="validationDefaultUsername" placeholder="Ex: arte"  aria-describedby="inputGroupPrepend2" >
                     <button class="btn btn-primary" type="submit">Pesquisar</button>
                             </div>
                         </div>
@@ -51,19 +51,19 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Categorias</th>
+                    <th scope="col">Cursos</th>
 
                     <th scope="col"> </th>
                     <th scope="col"> </th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($author as $author)
+                    @foreach ($course as $course)
                   <tr>
 
-                    <td>{{$author->author}}</td>
-                    <td><a href="{{route('edit.author', $author->id)}}" class="text-primary">Editar</a></td>
-                    <td><form action="{{ route('destroy.author', $author->id) }}" method="POST">
+                    <td>{{$course->course}}</td>
+                    <td><a href="{{route('edit.course', $course->id)}}" class="text-primary">Editar</a></td>
+                    <td><form action="{{ route('destroy.course', $course->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <a  onclick="event.preventDefault();

@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <title>Leitores</title>
+    <title>Emprestimos</title>
     <!--links-->
 @include('partials/links')
 <!--fim links-->
@@ -47,17 +47,16 @@
              @include('partials/message')
              <!--fim message success-->
             <div class="card-body">
-<h5>Leitores</h5>
+<h5>Detalhes sobre os emprestimos</h5>
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Nome</th>
-
-                    <th scope="col">Email</th>
-                    <th scope="col">Contacto</th>
-                    <th scope="col">Residencia</th>
-                    <th> </th>
-                    <th> </th>
+                    <th scope="col">Nome do Estudante</th>
+                    <th scope="col">Nome do bibliotecario</th>
+                    <th scope="col">Livro</th>
+                    <th scope="col">Data de emprestimo</th>
+                    <th scope="col">Data de devolução</th>
+                    <th scope="col">Obs</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -65,15 +64,12 @@
                   <tr>
 
                     <td>{{$reader->name}}</td>
-                    <td>{{$reader->email}}</td>
-                    <td>{{$reader->contact}}</td>
-                    <td>{{$reader->residence}}</td>
-                    <td><a href="{{route('edit.reader', $reader->id)}}" class="text-primary">Editar</a></td>
-                    <td><form action="{{ route('destroy.reader', $reader->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <a  onclick="event.preventDefault();
-                            this.closest('form').submit();" class="text-danger">Eliminar</a></form></td>
+                    <td>Job Mateus</td>
+                    <td>Algoritmos</td>
+                    <td>29/05/2024</td>
+                    <td>20/06/2024</td>
+<td> </td>
+
                   </tr>
                   @endforeach
                 </tbody>

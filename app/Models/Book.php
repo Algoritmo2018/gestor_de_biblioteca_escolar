@@ -16,7 +16,8 @@ class Book extends Model
         'author_id',
         'category_id',
         'publishing_company_id',
-        'content',
+        'number_of_copies',
+        'year_of_publication',
         'image_path',
     ];
 
