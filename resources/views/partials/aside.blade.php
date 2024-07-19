@@ -39,6 +39,20 @@
             </ul>
           </li>
           <li class="sidebar-item">
+            <a href="#" class="sidebar-link collapsed" data-bs-target="#usuario" data-bs-toggle="collapse"
+              aria-expanded="false">
+
+              Gerir Bibliotecario</a>
+            <ul id="usuario" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+             <li class="sidebar-item">
+                <a href="{{route('create.library_information')}}" class="sidebar-link" target="blank">adicionar</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="{{route('show.library_information')}}" class="sidebar-link" target="blank">editar/eliminar</a>
+              </li>
+            </ul>
+          </li>
+          <li class="sidebar-item">
             <a href="#" class="sidebar-link collapsed" data-bs-target="#calendario" data-bs-toggle="collapse"
               aria-expanded="false">
 
@@ -120,8 +134,20 @@
               <li class="sidebar-item">
                 <a href="{{route('all.book')}}" class="sidebar-link" target="blank">editar/eliminar</a>
               </li>
+              <li class="sidebar-item">
+                <a href="{{route('all.loan.book')}}" class="sidebar-link" target="blank">emprestados</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="{{route('all.book_return')}}" class="sidebar-link" target="blank">devolvidos</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="{{route('all.traffic_ticket')}}" class="sidebar-link" target="blank">estudantes com multa</a>
+              </li>
+
             </ul>
           </li>
+
+
 
       </ul>
     </div>

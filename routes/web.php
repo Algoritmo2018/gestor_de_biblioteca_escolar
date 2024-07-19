@@ -5,12 +5,18 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookReturnController;
+use App\Http\Controllers\BorrowedBookController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\LibraryInformationController;
 use App\Http\Controllers\PublishingCompanyController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TrafficTicketController;
+use App\Http\Controllers\UserinformationController;
+use App\Models\Book_return;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +29,41 @@ use App\Http\Controllers\StudentController;
 |
 */
 
+// Routes of book_returns
+
+Route::post('/{id}/store/book_return', [BookReturnController::class, 'store'])->name('store.book_return');
 
 
+Route::get('/all/book_return', [BookReturnController::class, 'all'])->name('all.book_return');
+//Routes of traffic ticket
 
+Route::post('/{id}/store/traffic_ticket', [TrafficTicketController::class, 'store'])->name('store.traffic_ticket');
 
+Route::put('/{id}/buy/traffic_ticket', [TrafficTicketController::class, 'buy'])->name('buy.traffic_ticket');
+
+Route::get('/all/traffic_ticket', [TrafficTicketController::class, 'all'])->name('all.traffic_ticket');
+
+//Routes of borrowed books
+
+Route::get('/{id}/create/loan/book/student', [BorrowedBookController::class, 'create'])->name('create.loan.book');
+
+Route::post('/store/loan/book/student/', [BorrowedBookController::class, 'store'])->name('store.loan.book');
+
+Route::get('/all/loan/book/student/', [BorrowedBookController::class, 'all'])->name('all.loan.book');
+
+Route::delete('/{id}/destroy/loan/book/student/', [LibraryInformationController::class, 'destroy'])->name('destroy.loan.book');
+
+//Routes of library
+
+Route::get('/create/library_information', [LibraryInformationController::class, 'create'])->name('create.library_information');
+Route::post('/store/library_information', [LibraryInformationController::class, 'store'])->name('store.library_information');
+
+Route::put('/{id}/update/library_information/', [LibraryInformationController::class, 'update'])->name('update.library_information');
+
+Route::delete('/{id}/destroy/library_information/', [LibraryInformationController::class, 'destroy'])->name('destroy.library_information');
+
+Route::get('/show/library_information', [LibraryInformationController::class, 'show'])->name('show.library_information');
+Route::get('/edit/library_information', [LibraryInformationController::class, 'edit'])->name('edit.library_information');
 
 Route::get('/', [HomeController::class, 'index'])->name('show.home');
 

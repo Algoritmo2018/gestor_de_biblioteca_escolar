@@ -17,4 +17,12 @@ class Course extends Model
     public function student(): HasMany{
         return $this->hasMany(Student::class);
      }
+
+      //Para eliminar os dados em cascata tabela course e tabela student
+    public static function booted()
+    {
+        static::deleting(function (Course $course) {
+            $course->student()->delete();
+        });
+    }
 }

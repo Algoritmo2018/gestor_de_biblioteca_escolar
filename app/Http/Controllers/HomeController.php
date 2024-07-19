@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(Book $book){
-        $book = $book->simplepaginate(3);
+        $book = $book->simplepaginate(15);
         return view('index', compact('book'));
     }
 }

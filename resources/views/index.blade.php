@@ -64,7 +64,7 @@
           <div class="card-body">
 
             <p class="card-text">{{$book->title}}</p>
-      <div><a href="" class="btn btn-success">Emprestar</a>
+      <div><a href="{{route('create.loan.book',$book->id)}}" class="btn btn-success">Emprestar</a>
         <a href="{{route('show.book',$book->id)}}" target="__blank" class="btn btn-primary">Detalhes</a></div>
           </div>
   </div></div>

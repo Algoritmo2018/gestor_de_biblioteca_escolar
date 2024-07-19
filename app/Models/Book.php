@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -33,4 +34,11 @@ class Book extends Model
     {
        return $this->belongsTo(Publishing_company::class);
     }
+    public function borrowed_book(): HasMany{
+        return $this->hasMany(Borrowed_book::class);
+     }
+
+     public function book_return(): HasMany{
+        return $this->hasMany(Book_return::class);
+     }
 }
