@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookReturnController;
 use App\Http\Controllers\BorrowedBookController;
+use App\Http\Controllers\BorrowedBookRatingController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TrafficTicketController;
 use App\Http\Controllers\UserinformationController;
 use App\Models\Book_return;
+use App\Models\borrowed_book_rating;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,9 @@ use App\Models\Book_return;
 |
 */
 
+// Routes of borrowed_book_rating
+
+Route::get('/borrowed_book_rating', [BorrowedBookRatingController::class, 'statistic'])->name('statistic');
 // Routes of book_returns
 
 Route::post('/{id}/store/book_return', [BookReturnController::class, 'store'])->name('store.book_return');

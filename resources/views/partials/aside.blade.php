@@ -143,7 +143,9 @@
               <li class="sidebar-item">
                 <a href="{{route('all.traffic_ticket')}}" class="sidebar-link" target="blank">estudantes com multa</a>
               </li>
-
+              <li class="sidebar-item">
+                <a href="{{route('statistic')}}" class="sidebar-link" target="blank">estatistica</a>
+              </li>
             </ul>
           </li>
 

@@ -57,4 +57,6 @@ class BorrowedBookController extends Controller
                 return redirect()->route('all.borrowed_book');
             }
 
+         
+
 }
