@@ -49,9 +49,9 @@
                                 </div>
                             </div>
                         </div>
- {{-- <!--Apresenta mensagem de erro-->
+   <!--Apresenta mensagem de erro-->
 @include('partials/error')
-<!--fim Apresenta mensagem de erro--> --}}
+<!--fim Apresenta mensagem de erro-->
                         <button class="btn btn-primary" type="submit">Atualizar</button>
                     </form>
                 </div>

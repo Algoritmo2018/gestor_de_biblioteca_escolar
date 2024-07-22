@@ -47,6 +47,9 @@
             </div>
             <input type="text" class="form-control" name="title" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
           </div>
+          <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+            <x-input-error :messages="$errors->get('title')"   class="mt-1" />
+            </div>
         </div>
       <div class="input-group mb-3">
               <div class="input-group-prepend">
@@ -58,6 +61,9 @@
                 <option value="{{$author->id}}">{{$author->author}}</option>
                 @endforeach
               </select>
+              <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+                <x-input-error :messages="$errors->get('author')"   class="mt-1" />
+                </div>
             </div>
 
             <div class="input-group mb-3">
@@ -70,6 +76,9 @@
                 <option value="{{$category->id}}">{{$category->category}}</option>
                 @endforeach
                              </select>
+                             <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+                                <x-input-error :messages="$errors->get('category')"   class="mt-1" />
+                                </div>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -81,6 +90,9 @@
                   <option value="{{$publishing_company->id}}">{{$publishing_company->publishing_company}}</option>
                   @endforeach
                 </select>
+                <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+                    <x-input-error :messages="$errors->get('publishing_company')"   class="mt-1" />
+                    </div>
               </div>
               <div class="col-md-12 mb-3">
                 <label for="validationDefaultUsername">Ano de publicação</label>
@@ -90,7 +102,11 @@
                   </div>
                   <input type="number" class="form-control" name="year_of_publication" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
                 </div>
-              </div> <div class="col-md-12 mb-3">
+                <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+                    <x-input-error :messages="$errors->get('year_of_publication')"   class="mt-1" />
+                    </div>
+              </div>
+               <div class="col-md-12 mb-3">
                 <label for="validationDefaultUsername">Nº Copias/Examples</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -98,12 +114,18 @@
                   </div>
                   <input type="number" class="form-control" name="number_of_copies" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
                 </div>
+                <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+                    <x-input-error :messages="$errors->get('number_of_copies')"   class="mt-1" />
+                    </div>
               </div>
       <div class="col-md-12 mb-3">
         <label for="validationDefaultUsername">Capa</label>
         <div class="input-group">
           <input type="file" class="form-control" name="image_path" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
         </div>
+        <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+            <x-input-error :messages="$errors->get('image_path')"   class="mt-1" />
+            </div>
       </div>
           </div>
 

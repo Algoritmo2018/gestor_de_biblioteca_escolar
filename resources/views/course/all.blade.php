@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <title>Admin</title>
+    <title>cursos</title>
     <!--links-->
 @include('partials/links')
 <!--fim links-->
@@ -36,7 +36,7 @@
                         <div class="col-md-12 mb-1">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="course"
-                                    id="validationDefaultUsername" placeholder="Ex: arte"  aria-describedby="inputGroupPrepend2" >
+                                    id="validationDefaultUsername" placeholder="Ex: informatica"  aria-describedby="inputGroupPrepend2" >
                     <button class="btn btn-primary" type="submit">Pesquisar</button>
                             </div>
                         </div>

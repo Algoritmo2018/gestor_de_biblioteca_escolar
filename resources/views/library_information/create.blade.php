@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <title>Adicionar</title>
+    <title>Adicionar meus dados</title>
     <!--links-->
 @include('partials/links')
 <!--fim links-->
@@ -29,13 +29,15 @@
                <!--Message success-->
   @include('partials/message')
   <!--fim message success-->
-
+ <!--Message error-->
+ @include('partials/error')
+ <!--fim message error-->
   <!-- Formulario de cadastro-->
   <div class="container d-flex justify-content-center mt-3 mb-2">
 
     <form action="{{route('store.library_information')}}" method="POST" enctype="multipart/form-data">
         @csrf
-      <h4>Adicionar</h4>
+      <h4>Adicionar meus dados</h4>
       <hr class="mb-3">
       <div class="form-floating">
 
@@ -49,6 +51,9 @@
                   </div>
                   <input type="text" class="form-control" name="bi" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
                 </div>
+                <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+                    <x-input-error :messages="$errors->get('bi')"   class="mt-1" />
+                    </div>
               </div>
               <div class="col-md-12 mb-3">
                 <label for="validationDefaultUsername">Residência</label>
@@ -58,6 +63,9 @@
                   </div>
                   <input type="text" class="form-control" name="residence" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
                 </div>
+                <div class="col-12 error_one"  style="color: rgb(161, 8, 8)">
+                    <x-input-error :messages="$errors->get('residence')"   class="mt-1" />
+                    </div>
               </div>
               <div class="col-md-12 mb-3">
                 <label for="validationDefaultUsername">Contacto</label>
@@ -67,6 +75,9 @@
                   </div>
                   <input type="text" class="form-control" name="contact" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
                 </div>
+                <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+                    <x-input-error :messages="$errors->get('contact')"   class="mt-1" />
+                    </div>
               </div>
 
           </div>

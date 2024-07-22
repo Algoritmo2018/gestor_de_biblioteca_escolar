@@ -17,10 +17,10 @@
               Auth</a>
             <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                            <li class="sidebar-item">
-                <a href="#" class="sidebar-link" target="blank">Register</a>
+                <a href="{{route('register')}}" class="sidebar-link" target="blank">Register</a>
               </li>
               <li class="sidebar-item">
-                <a href="#" class="sidebar-link" target="blank">Forget Password</a>
+                <a href="{{route('password.request')}}" class="sidebar-link" target="blank">Forget Password</a>
               </li>
             </ul>
           </li>

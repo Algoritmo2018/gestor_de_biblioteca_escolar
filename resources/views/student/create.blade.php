@@ -47,6 +47,9 @@
             </div>
             <input type="text" class="form-control" name="name" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
           </div>
+          <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+            <x-input-error :messages="$errors->get('name')"   class="mt-1" />
+            </div>
         </div>
       <div class="input-group mb-3">
               <div class="input-group-prepend">
@@ -59,6 +62,10 @@
                 <option value="Interno" >Interno</option>
 
               </select>
+
+          <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+            <x-input-error :messages="$errors->get('type')"   class="mt-1" />
+            </div>
             </div>
 
             <div class="input-group mb-3">
@@ -71,6 +78,10 @@
 <option  value="{{$course->id}}">{{$course->course}}</option>
 @endforeach
                 </select>
+
+          <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+            <x-input-error :messages="$errors->get('course_id')"   class="mt-1" />
+            </div>
               </div>
 
 
@@ -82,6 +93,10 @@
                   </div>
                   <input type="text" class="form-control" name="bi" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
                 </div>
+
+          <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+            <x-input-error :messages="$errors->get('bi')"   class="mt-1" />
+            </div>
               </div>
               <div class="col-md-12 mb-3">
                 <label for="validationDefaultUsername">Residência</label>
@@ -91,6 +106,10 @@
                   </div>
                   <input type="text" class="form-control" name="residence" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
                 </div>
+
+          <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+            <x-input-error :messages="$errors->get('residence')"   class="mt-1" />
+            </div>
               </div>
               <div class="col-md-12 mb-3">
                 <label for="validationDefaultUsername">Contacto</label>
@@ -100,6 +119,10 @@
                   </div>
                   <input type="text" class="form-control" name="contact" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
                 </div>
+
+          <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+            <x-input-error :messages="$errors->get('contact')"   class="mt-1" />
+            </div>
               </div>
               <div class="col-md-12 mb-3">
                 <label for="validationDefaultUsername">Email</label>
@@ -109,6 +132,10 @@
                   </div>
                   <input type="email" class="form-control" name="email" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
                 </div>
+
+          <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+            <x-input-error :messages="$errors->get('email')"   class="mt-1" />
+            </div>
               </div>
 
           </div>

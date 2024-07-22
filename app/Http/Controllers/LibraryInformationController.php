@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateLibraryinformationRequest;
 use Illuminate\Http\Request;
 use App\Models\LibraryInformation;
 use Illuminate\Support\Facades\Auth;
@@ -14,10 +15,16 @@ public function create(){
     return view('library_information/create');
 }
 
-public function store(LibraryInformation $library_information, Request $request)
+public function store(LibraryInformation $library_information, StoreUpdateLibraryinformationRequest $request)
 {
     $user = Auth::user();
+//Verifica si este usuario já foi registrado na bd, si já, então não vai permitir o registro
+    $library_information = $library_information->where('user_id',$user->id)->count();
+    if($library_information > 0){
 
+    session()->flash('error', 'Os seus dados já foram registrados no nosso banco de dados');
+        return back();
+    }
     $library_information = LibraryInformation::create([
         'user_id' => $user->id,
         'bi' => $request->bi,
@@ -41,7 +48,8 @@ public function store(LibraryInformation $library_information, Request $request)
    return view('library_information/edit', compact('user','library_information'));
       }
 
-      public function update(Request $request, LibraryInformation $library_information, string $id){
+      public function update(StoreUpdateLibraryinformationRequest $request, LibraryInformation $library_information, string $id){
+ 
 
         if (!$library_information = $library_information->find($id)) {
             return back();

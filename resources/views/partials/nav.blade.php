@@ -9,9 +9,19 @@
             <img src="{{asset('img/profile.png')}}" class="avatar img-fluid rounded" alt="">
           </a>
           <div class="dropdown-menu dropdown-menu-end">
-            <a href="#" class="dropdown-item" target="blank">Profile</a>
-            <a href="#" class="dropdown-item" target="blank">Setting</a>
-            <a href="#" class="dropdown-item" target="blank">Logout</a>
+
+
+
+                    <a href="{{route('profile.edit')}}" class="dropdown-item" target="blank">Perfil</a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+    <a href="{{route('logout')}}" class="dropdown-item" onclick="event.preventDefault();
+                    this.closest('form').submit();">Terminar sessão</a>
+
+                    </form>
+
+
           </div>
         </li>
       </ul>

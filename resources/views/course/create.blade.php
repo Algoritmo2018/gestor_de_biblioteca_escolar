@@ -38,13 +38,17 @@
     <hr class="mb-3">
     <div class="form-floating">
 
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-1">
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupPrepend2">C</span>
           </div>
           <input type="text" class="form-control" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" name="course" value="{{old('course')}}" required>
         </div>
+
+        <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+            <x-input-error :messages="$errors->get('course')"   class="mt-1" />
+            </div>
       </div>
         </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateCourseRequest;
 use App\Models\Course;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class CourseController extends Controller
         return view('course/create');
     }
 
-    public function store(Course $course, Request $request)
+    public function store(Course $course, StoreUpdateCourseRequest $request)
     {
         $data = $request->all();
         $course = $course->create($data);
@@ -29,7 +30,7 @@ public function edit(Course $course, string|int $id)
     return view('course/edit', compact('course'));
 }
 
-public function update(Request $request, Course $course, string $id){
+public function update(StoreUpdateCourseRequest $request, Course $course, string $id){
 
     if (!$course = $course->find($id)) {
         return back();
@@ -43,9 +44,15 @@ public function update(Request $request, Course $course, string $id){
     return redirect()->route('all.course');
 }
 
-    public function all(Course $course){
+    public function all(Course $course, Request $request){
+          //Si não existir valor a ser pesquisado traz todos as salas cadastradas
+          $valor = $request->input('course');
+          if (!empty($valor)) {
+              $course = $course->where('course', 'like', "%{$valor}%")->orderBy('course', 'asc')->get();
+              session()->flash('sucess', 'Resultado da pesquisa:');
+          } else {
 $course = $course->orderBy('course', 'asc')->get();
-
+          }
 
 return view('course/all', compact('course'));
     }

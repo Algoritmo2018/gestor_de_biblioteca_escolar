@@ -45,6 +45,9 @@
           </div>
           <input type="text" class="form-control" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" name="publishing_company" value="{{old('publishing_company')}}" required>
         </div>
+        <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+            <x-input-error :messages="$errors->get('publishing_company')"   class="mt-1" />
+            </div>
       </div>
         </div>
 

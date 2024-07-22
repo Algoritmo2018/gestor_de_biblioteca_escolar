@@ -47,8 +47,11 @@
                                         id="validationDefaultUsername" value="{{ $publishing_company->publishing_company }}"
                                         aria-describedby="inputGroupPrepend2" required>
                                 </div>
+                                <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+                                    <x-input-error :messages="$errors->get('publishing_company')"   class="mt-1" />
+                                    </div>
                             </div>
-                        </div> 
+                        </div>
                         <button class="btn btn-primary" type="submit">Atualizar</button>
                     </form>
                 </div>

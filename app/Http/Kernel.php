@@ -43,6 +43,8 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'super_user' => [ \App\Http\Middleware\SuperUser::class, ],
+        'library_user' => [ \App\Http\Middleware\LibraryUser::class, ],
     ];
 
     /**
@@ -53,6 +55,9 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $middlewareAliases = [
+
+        'super_user' => \App\Http\Middleware\SuperUser::class,
+        'library_user' => \App\Http\Middleware\LibraryUser::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,

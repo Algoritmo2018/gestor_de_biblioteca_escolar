@@ -30,6 +30,9 @@
   @include('partials/message')
   <!--fim message success-->
 
+ <!--Message error-->
+ @include('partials/error')
+ <!--fim message error-->
   <!-- Formulario de cadastro-->
   <div class="container d-flex justify-content-center mt-3 mb-2">
 
@@ -50,6 +53,9 @@
                   </div>
                   <input type="text" class="form-control" name="bi" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" value="{{$library_information->bi}}" required>
                 </div>
+                <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+                    <x-input-error :messages="$errors->get('bi')"   class="mt-1" />
+                    </div>
               </div>
               <div class="col-md-12 mb-3">
                 <label for="validationDefaultUsername">Residência</label>
@@ -59,6 +65,9 @@
                   </div>
                   <input type="text" class="form-control" name="residence" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" value="{{$library_information->residence}}" required>
                 </div>
+                <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+                    <x-input-error :messages="$errors->get('residence')"   class="mt-1" />
+                    </div>
               </div>
               <div class="col-md-12 mb-3">
                 <label for="validationDefaultUsername">Contacto</label>
@@ -68,6 +77,9 @@
                   </div>
                   <input type="text" class="form-control" name="contact" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" value="{{$library_information->contact}}" required>
                 </div>
+                <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+                    <x-input-error :messages="$errors->get('contact')"   class="mt-1" />
+                    </div>
               </div>
 
           </div>

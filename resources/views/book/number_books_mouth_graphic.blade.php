@@ -127,8 +127,8 @@ array_push($valores,$dezembro); ?>
                 <div class="card-body">
                     <h4 style="color: black">Livros emprestados por mes</h4>
 
-                    <div style="max-width: 600px; max-height:200px;">
-                        <canvas id="grafico1" style="max-width: 600px; max-height: 200px;"> </canvas></div>
+                    <div style="width: 100%; max-height:200px;">
+                        <canvas id="grafico1" style="width: 100%; max-height: 200px;"> </canvas></div>
                             <script>
                                 const ctx = document.getElementById('grafico1');
                                 let labelsx=["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];

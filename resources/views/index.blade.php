@@ -20,9 +20,12 @@
  <!--Message success-->
  @include('partials/message')
  <!--fim message success-->
+
 <!--Menu de links-->
 <div class="container mt-4">
-
+ <!--Message error-->
+ @include('partials/error')
+ <!--fim message error-->
   <div class="row pb-3">
       <div class="col-12">
           <div class="d-flex flex-row justify-content-center justify-content-md-center">

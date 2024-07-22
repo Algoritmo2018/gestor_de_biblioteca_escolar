@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateCategoryRequest;
 use App\Models\category;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class CategoryController extends Controller
         return view('category/create');
     }
 
-    public function store(category $category, Request $request)
+    public function store(category $category, StoreUpdateCategoryRequest $request)
     {
         $data = $request->all();
         $category = $category->create($data);
@@ -29,7 +30,7 @@ public function edit(Category $category, string|int $id)
     return view('category/edit', compact('category'));
 }
 
-public function update(Request $request, Category $category, string $id){
+public function update(StoreUpdateCategoryRequest $request, Category $category, string $id){
 
     if (!$category = $category->find($id)) {
         return back();
@@ -43,9 +44,15 @@ public function update(Request $request, Category $category, string $id){
     return redirect()->route('all.category');
 }
 
-    public function all(category $category){
+    public function all(category $category, Request $request){
+            //Si não existir valor a ser pesquisado traz todos as categorias cadastradas
+            $valor = $request->input('category');
+            if (!empty($valor)) {
+                $category = $category->where('category', 'like', "%{$valor}%")->orderBy('category', 'asc')->get();
+                session()->flash('sucess', 'Resultado da pesquisa:');
+            } else {
 $category = $category->orderBy('category', 'asc')->get();
-
+            }
 
 return view('category/all', compact('category'));
     }

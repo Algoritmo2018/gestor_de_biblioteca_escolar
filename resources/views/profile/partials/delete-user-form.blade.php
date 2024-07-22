@@ -38,7 +38,7 @@
                     placeholder="{{ __('Senha') }}"
                 />
 
-                <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+                <x-input-error :messages="$errors->userDeletion->get('password')"   class="mt-1" />
             </div>
 
             <div class="mt-6 flex justify-end">

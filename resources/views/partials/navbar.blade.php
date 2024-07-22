@@ -38,21 +38,10 @@
   <!--Painel de categorias-->
   <div class="offcanvas offcanvas-start text-bg-dark" id="categorias" tabindex="1" data-bs-scroll="true"
     data-bs-backdrop="static" style="--bs-offcanvas-width:250px;">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title">Links</h5>
+    <div class="offcanvas-header d-flex justify-content-end">
       <button class="btn-close btn btn-light" data-bs-dismiss="offcanvas"></button>
     </div>
-    <div style="margin-bottom: -13px;"></div>
-    <div class="offcanvas-body">
-       <ul class="pagination d-flex flex-column justify-content-start">
-         <li class="page-item mb-2">
-          <a href="cadastrar-se.html" class="nav-link">Cadastrar-se</a>
-        </li><li class="page-item mb-2">
-            <a href="login.html" class="nav-link">Login</a>
-        </li>
-      </ul>
-      </div>
-      <div style="margin-bottom: -100px;"></div>
+
     <div class="offcanvas-header">
       <h5 class="offcanvas-title">Categorias</h5>
     </div>

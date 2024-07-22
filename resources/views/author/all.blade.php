@@ -30,12 +30,12 @@
           <main class="content px-3 py-2">
             <div class="container d-flex  justify-content-center mt-3 mb-2">
 
-                <form action="{{ route('all.author') }}" method="GET">
+                <form action="{{ route('search.author') }}" method="GET">
                     @csrf
                     <div class="form-floating">
                         <div class="col-md-12 mb-1">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="course"
+                                <input type="text" class="form-control" name="author"
                                     id="validationDefaultUsername" placeholder="Ex: Donald"  aria-describedby="inputGroupPrepend2" >
                     <button class="btn btn-primary" type="submit">Pesquisar</button>
                             </div>
@@ -43,15 +43,16 @@
                     </div>
                 </form>
             </div>
+            <div class="card-body">
+
              <!--Message success-->
              @include('partials/message')
              <!--fim message success-->
-            <div class="card-body">
 
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Categorias</th>
+                    <th scope="col">Autores</th>
 
                     <th scope="col"> </th>
                     <th scope="col"> </th>
@@ -72,6 +73,7 @@
                   @endforeach
                 </tbody>
               </table>
+
             </div>
           </main>
 

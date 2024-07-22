@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <title>Admin</title>
+    <title>Editando categoria</title>
     <!--links-->
 @include('partials/links')
 <!--fim links-->
@@ -47,11 +47,12 @@
                                         id="validationDefaultUsername" value="{{ $category->category }}"
                                         aria-describedby="inputGroupPrepend2" required>
                                 </div>
+
+            <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+                <x-input-error :messages="$errors->get('category')"   class="mt-1" />
+                </div>
                             </div>
                         </div>
- {{-- <!--Apresenta mensagem de erro-->
-@include('partials/error')
-<!--fim Apresenta mensagem de erro--> --}}
                         <button class="btn btn-primary" type="submit">Atualizar</button>
                     </form>
                 </div>

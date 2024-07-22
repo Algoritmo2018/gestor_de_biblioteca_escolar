@@ -34,10 +34,11 @@
                 <img src="{{asset('img/profile.png')}}" class="avatar img-fluid rounded" alt="">
               </a>
               <div class="dropdown-menu dropdown-menu-end">
-                <a href="#" class="dropdown-item" target="blank">Perfil</a>
-                              <form method="POST" action="">
+                <a href="{{route('profile.edit')}}" class="dropdown-item" target="blank">Perfil</a>
+                <form method="POST" action="{{ route('logout') }}">
                     @csrf
-<a href="route('logout')" class="dropdown-item" onclick="event.preventDefault();
+
+<a href="{{route('logout')}}" class="dropdown-item" onclick="event.preventDefault();
                 this.closest('form').submit();">Terminar sessão</a>
 
                 </form>
@@ -59,7 +60,7 @@
                   <div class="row g-0 w-100">
                     <div class="col-6">
                       <div class="p-3 m-1">
-                        <h4>Olá, sr(a) Luis</h4>
+                        <h4>Olá, sr(a) {{ Auth::user()->name }}</h4>
                       </div>
                     </div>
 

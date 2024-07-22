@@ -54,7 +54,7 @@
                     <h4 style="color: black">Dados estatisticos de livros emprestados - grafico</h4>
 
                     <div style="width: 100%; height:100%;">
-                        <canvas id="grafico1" style="width: 50%; height: 50%;"> </canvas></div>
+                        <canvas id="grafico1" style="width: 100%; height: 50%;"> </canvas></div>
                             <script>
                                 const ctx = document.getElementById('grafico1');
                                 let labelsx=<?php echo json_encode($title); ?>;
