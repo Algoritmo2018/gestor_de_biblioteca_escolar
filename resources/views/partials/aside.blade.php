@@ -146,6 +146,12 @@
               <li class="sidebar-item">
                 <a href="{{route('statistic')}}" class="sidebar-link" target="blank">estatistica</a>
               </li>
+              <li class="sidebar-item">
+                <a href="{{route('graphic')}}" class="sidebar-link" target="blank">grafico de livros emprestados</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="{{route('graphic2')}}" class="sidebar-link" target="blank">grafico de livros emprestados por mes</a>
+              </li>
             </ul>
           </li>
 

@@ -34,6 +34,8 @@ use App\Models\borrowed_book_rating;
 // Routes of borrowed_book_rating
 
 Route::get('/borrowed_book_rating', [BorrowedBookRatingController::class, 'statistic'])->name('statistic');
+Route::get('/borrowed_book_rating/graphic', [BorrowedBookRatingController::class, 'graphic'])->name('graphic');
+Route::get('/borrowed_book_rating/graphic2', [BorrowedBookRatingController::class, 'graphic2'])->name('graphic2');
 // Routes of book_returns
 
 Route::post('/{id}/store/book_return', [BookReturnController::class, 'store'])->name('store.book_return');
