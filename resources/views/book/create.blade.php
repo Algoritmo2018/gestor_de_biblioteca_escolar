@@ -45,7 +45,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroupPrepend2">T</span>
             </div>
-            <input type="text" class="form-control" name="title" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
+            <input type="text" class="form-control" name="title" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" value="{{ old('title') }}" required>
           </div>
           <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
             <x-input-error :messages="$errors->get('title')"   class="mt-1" />
@@ -100,7 +100,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroupPrepend2">A</span>
                   </div>
-                  <input type="number" class="form-control" name="year_of_publication" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
+                  <input type="number" class="form-control" name="year_of_publication" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" value="{{ old('year_of_publication') }}" required>
                 </div>
                 <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
                     <x-input-error :messages="$errors->get('year_of_publication')"   class="mt-1" />
@@ -112,7 +112,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroupPrepend2">C/E</span>
                   </div>
-                  <input type="number" class="form-control" name="number_of_copies" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
+                  <input type="number" class="form-control" name="number_of_copies" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" value="{{ old('number_of_copies') }}" required>
                 </div>
                 <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
                     <x-input-error :messages="$errors->get('number_of_copies')"   class="mt-1" />
@@ -121,7 +121,7 @@
       <div class="col-md-12 mb-3">
         <label for="validationDefaultUsername">Capa</label>
         <div class="input-group">
-          <input type="file" class="form-control" name="image_path" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
+          <input type="file" class="form-control" name="image_path" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" value="{{ old('image_path') }}" required>
         </div>
         <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
             <x-input-error :messages="$errors->get('image_path')"   class="mt-1" />

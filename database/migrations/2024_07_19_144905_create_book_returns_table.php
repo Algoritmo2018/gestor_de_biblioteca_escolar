@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('book_returns', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('borrowed_book_id')->index();
+            $table->uuid('borrowed_book_id')->index()->unique();
             $table->uuid('student_id')->index();
             $table->uuid('user_id')->index();
-            $table->uuid('book_id')->index(); 
+            $table->uuid('book_id')->index();
             $table->timestamp('return_date')->nullable();
             $table->text('observation');
             $table->timestamps();

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('traffic_tickets', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('borrowed_book_id')->index();
+            $table->uuid('borrowed_book_id')->index()->unique();
             $table->uuid('student_id')->index();
             $table->integer('debt');
             $table->string('state');

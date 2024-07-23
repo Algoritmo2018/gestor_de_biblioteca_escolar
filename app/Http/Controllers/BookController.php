@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateBookRequest;
+use App\Http\Requests\UpdateBookRequest;
 use Illuminate\Support\Facades\File;
 use App\Models\author;
 use App\Models\Book;
@@ -21,7 +23,7 @@ $publishing_company = $publishing_company->orderBy('publishing_company', 'asc')-
         return view('book/create', compact('category','author', 'publishing_company'));
     }
 
-    public function store(Request $request){
+    public function store(StoreUpdateBookRequest $request){
         $imagePath = $request->file('image_path')->store('public/img/book_cap');
 
         $image = new Book([

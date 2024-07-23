@@ -27,33 +27,11 @@
  @include('partials/error')
  <!--fim message error-->
   <div class="row pb-3">
-      <div class="col-12">
-          <div class="d-flex flex-row justify-content-center justify-content-md-center">
 
-              <nav class="d-inline-block me-3 ">
-                  <ul class="pagination pagination-sm my-0">
-                      <li class="page-item">
-                          <a class="page-link text-bg-dark fs-5" href="#">1</a>
-                      </li>
-                      <li class="page-item">
-                          <a class="page-link text-bg-dark fs-5" href="#">2</a>
-                      </li>
-                      <li class="page-item disabled">
-                          <a class="page-link text-bg-dark fs-5" href="#">3</a>
-                      </li>
-                      <li class="page-item">
-                          <a class="page-link text-bg-dark fs-5" href="#">4</a>
-                      </li>
-                      <li class="page-item">
-                          <a class="page-link text-bg-dark fs-5" href="#">5</a>
-                      </li>
-                      <li class="page-item">
-                          <a class="page-link text-bg-dark fs-5" href="#">6</a>
-                      </li>
-                  </ul>
-              </nav>
-          </div>
-      </div>
+ <!--Paginação-->
+ @include('partials/pagination')
+ <!--Fim do Paginação-->
+
   </div><hr class="mt-1"></div>
   <!--Fim Menu de links-->
  <!--Tecnologia-->
@@ -80,33 +58,7 @@
 <div class="container">
 
 <div class="row pb-3">
-    <div class="col-12">
-        <div class="d-flex flex-row justify-content-center justify-content-md-center">
 
-            <nav class="d-inline-block me-3 ">
-                <ul class="pagination pagination-sm my-0">
-                    <li class="page-item">
-                        <a class="page-link text-bg-dark fs-5" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link text-bg-dark fs-5" href="#">2</a>
-                    </li>
-                    <li class="page-item disabled">
-                        <a class="page-link text-bg-dark fs-5" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link text-bg-dark fs-5" href="#">4</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link text-bg-dark fs-5" href="#">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link text-bg-dark fs-5" href="#">6</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
 </div> </div>
 <!--Fim Menu de links-->
 <div class=" d-md-none d-lg-none d-sm-none d-block"  style="height: 250px;"></div>

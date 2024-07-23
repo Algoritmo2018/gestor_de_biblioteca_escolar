@@ -74,17 +74,35 @@
                     <td>{{$borrowed_book->return_date}}</td>
                     <td>{{$borrowed_book->observation}}</td>
                     <td>
-@if($borrowed_book->return_date < $data_actual)
+                        <?php $c=0; ?>
+                        @foreach($traffic_ticket as $traffic_ticket2)
+
+@if($traffic_ticket2->borrowed_book_id == $borrowed_book->id)
+<?php $c=$c+1; break;?>
+@endif
+        @endforeach
+@if(($borrowed_book->return_date < $data_actual) && ($c == 0))
+
+
 <form action="{{ route('store.traffic_ticket', $borrowed_book->id) }}" method="POST">
     @csrf
     <input type="hidden" name="student_id" value="{{$borrowed_book->student->id}}">
     <a  onclick="event.preventDefault();
         this.closest('form').submit();" class="text-success">Registar</a></form>
 
+
 @endif
                         </td>
 
                         <td>
+                            <?php $c=0; ?>
+                            @foreach($book_return as $book_return2)
+
+    @if($book_return2->borrowed_book_id == $borrowed_book->id)
+    <?php $c=$c+1; break;?>
+    @endif
+            @endforeach
+            @if($c == 0)
                             <form action="{{ route('store.book_return', $borrowed_book->id) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="student_id" value="{{$borrowed_book->student->id}}">
@@ -93,7 +111,7 @@
                                 <a  onclick="event.preventDefault();
                                     this.closest('form').submit();" class="text-success">Registar</a></form>
 
-
+@endif
                                                     </td>
 
                     <td><form action="{{ route('destroy.loan.book', $borrowed_book->id) }}" method="POST">
@@ -105,7 +123,7 @@
                   @endforeach
                 </tbody>
               </table>
-               
+
             </div>
           </main>
 

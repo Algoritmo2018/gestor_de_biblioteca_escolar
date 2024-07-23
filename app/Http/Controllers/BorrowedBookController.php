@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Book_return;
 use App\Models\Borrowed_book;
 use App\Models\Course;
 use App\Models\Student;
+use App\Models\Traffic_ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,13 +39,15 @@ class BorrowedBookController extends Controller
     return redirect()->route('show.home');
     }
 
-    public function all(Borrowed_book $borrowed_book, Student $student, Book $book, User $user){
+    public function all(Borrowed_book $borrowed_book, Student $student, Book $book, User $user,Traffic_ticket $traffic_ticket, Book_return $book_return){
+        $traffic_ticket = $traffic_ticket->get();
+        $book_return = $book_return->get();
         $borrowed_book = $borrowed_book->orderBy('return_date', 'asc')->get();
         $student = $student->orderBy('name', 'asc')->get();
         $book = $book->orderBy('title', 'asc')->get();
         $user = $user->orderBy('name', 'asc')->get();
 
-        return view('book/all_books_borrowed', compact('borrowed_book', 'student', 'book', 'user'));
+        return view('book/all_books_borrowed', compact('borrowed_book', 'student', 'book', 'user','traffic_ticket','book_return'));
             }
 
             public function destroy(Borrowed_book $borrowed_book, string|int $id)
@@ -57,6 +61,6 @@ class BorrowedBookController extends Controller
                 return redirect()->route('all.borrowed_book');
             }
 
-         
+
 
 }

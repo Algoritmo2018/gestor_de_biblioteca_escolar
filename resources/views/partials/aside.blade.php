@@ -108,20 +108,7 @@
               </li>
             </ul>
           </li>
-          <li class="sidebar-item">
-            <a href="#" class="sidebar-link collapsed" data-bs-target="#reader" data-bs-toggle="collapse"
-              aria-expanded="false">
 
-              Gerir Leitor</a>
-            <ul id="reader" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-             <li class="sidebar-item">
-                <a href="{{route('create.reader')}}" class="sidebar-link" target="blank">adicionar</a>
-              </li>
-              <li class="sidebar-item mb-1">
-                <a href="{{route('all.reader')}}" class="sidebar-link" target="__blank">editar/eliminar</a>
-              </li>
-            </ul>
-          </li>
           <li class="sidebar-item">
             <a href="#" class="sidebar-link collapsed" data-bs-target="#cargahoraria" data-bs-toggle="collapse"
               aria-expanded="false">
@@ -130,10 +117,7 @@
             <ul id="cargahoraria" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
              <li class="sidebar-item">
                 <a href="{{route('create.book')}}" class="sidebar-link" target="blank">adicionar</a>
-              </li>
-              <li class="sidebar-item">
-                <a href="{{route('all.book')}}" class="sidebar-link" target="blank">editar/eliminar</a>
-              </li>
+              </li> 
               <li class="sidebar-item">
                 <a href="{{route('all.loan.book')}}" class="sidebar-link" target="blank">emprestados</a>
               </li>
