@@ -22,10 +22,35 @@ class BorrowedBookController extends Controller
         return view('book/create_loan', compact('student','book_id'));
     }
 
-    public function store(Request $request, Borrowed_book $borrowed_book){
+    public function store(Request $request, Borrowed_book $borrowed_book,Traffic_ticket $traffic_ticket){
 //Traz os dados do usuario logado
         $user = Auth::user();
+        $data_actual = date('Y-m-d H:i:s');
+        if($request->input('date_borrowed') < $data_actual){
+            session()->flash('error', 'A data de emprestimo não pode ser menor que a data de hoje');
+            return back();
+        }
 
+        if($request->input('return_date') < $request->input('date_borrowed')){
+            session()->flash('error', 'A data de devolução tem de ser maior a data actual');
+            return back();
+        }
+
+        $traffic_ticket = $traffic_ticket
+        ->where('student_id', $request->student_id)
+        ->where('state', 'on')->count();
+        if($traffic_ticket > 0){
+            session()->flash('error', 'Emprestimo negado a este estudante, ele possui multas que deve pagar.');
+            return back();
+        }
+
+        $request->validate([
+            'student_id' => ['required', 'max:255'],
+            'book_id' => ['required', 'max:255'],
+            'date_borrowed' => ['required'],
+            'return_date' => ['required'],
+            'observation' => ['required', 'max:255'],
+        ]);
     $borrowed_book = Borrowed_book::create([
         'student_id' => $request->student_id,
         'user_id' => $user->id,

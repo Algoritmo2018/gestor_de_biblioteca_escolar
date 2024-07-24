@@ -29,6 +29,9 @@
                <!--Message success-->
   @include('partials/message')
   <!--fim message success-->
+   <!--Error-->
+  @include('partials/error')
+  <!--fim Error-->
 
   <!-- Formulario de cadastro-->
   <div class="container d-flex justify-content-center mt-3 mb-2">
@@ -44,7 +47,7 @@
                 <label class="input-group-text" for="inputGroupSelect01">Selecionar estudante:</label>
               </div>
               <select class="form-select  col-md-12 rounded-2" name="student_id" id="inputGroupSelect01">
-                <option selected>Escolher...</option>
+                <option value="{{old('student_id')}}" selected>Escolher...</option>
                 @foreach ($student as $student)
                 <option value="{{$student->id}}">{{$student->name}}</option>
                 @endforeach
@@ -60,7 +63,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroupPrepend2">D</span>
                   </div>
-                  <input type="datetime-local" class="form-control" name="date_borrowed" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
+                  <input type="datetime-local" class="form-control" name="date_borrowed" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" value="{{old('date_borrowed')}}" required>
                 </div>
                 <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
                     <x-input-error :messages="$errors->get('date_borrowed')"   class="mt-1" />
@@ -72,7 +75,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroupPrepend2">D</span>
                   </div>
-                  <input type="datetime-local" class="form-control" name="return_date" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" required>
+                  <input type="datetime-local" class="form-control" name="return_date" id="validationDefaultUsername"   aria-describedby="inputGroupPrepend2" value="{{old('return_date')}}" required>
                 </div>
                 <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
                     <x-input-error :messages="$errors->get('return_date')"   class="mt-1" />

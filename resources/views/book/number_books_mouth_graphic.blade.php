@@ -105,7 +105,7 @@ array_push($valores,$dezembro); ?>
 
 
             <main class="content px-3 py-2" style="background-color: rgb(170, 170, 170)">
-            
+
                 <!--Message success-->
                 @include('partials/message')
                 <!--fim message success-->
@@ -125,7 +125,7 @@ array_push($valores,$dezembro); ?>
                                   data: {
                                     labels: labelsx,
                                     datasets: [{
-                                      label: 'quantidade-titulo',
+                                      label: 'quantidade-mês',
                                       data: valoresy,
                                       borderWidth: 1
                                     }]
