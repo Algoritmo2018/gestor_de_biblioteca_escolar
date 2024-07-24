@@ -24,9 +24,17 @@ class TrafficTicketController extends Controller
             }
 
 
-    public function all(Borrowed_book $borrowed_book, Student $student, Book $book, Traffic_ticket $traffic_ticket){
+    public function all(Borrowed_book $borrowed_book, Student $student, Book $book, Traffic_ticket $traffic_ticket, Request $request){
+ //Si não existir valor a ser pesquisado traz todos as salas cadastradas
+ $valor = $request->input('student_id');
+ if (!empty($valor)) {
 
+    $student = $student->where('name', 'like', "%{$valor}%")->orderBy('name', 'asc')->first();
+    $traffic_ticket = $student->traffic_ticket;
+     session()->flash('sucess', 'Resultado da pesquisa:');
+ } else {
         $traffic_ticket = $traffic_ticket->get();
+ }
         $borrowed_book = $borrowed_book->orderBy('return_date', 'asc')->get();
         $student = $student->orderBy('name', 'asc')->get();
         $book = $book->orderBy('title', 'asc')->get();
@@ -40,7 +48,7 @@ public function buy(Traffic_ticket $traffic_ticket, string $id){
     if (!$traffic_ticket = $traffic_ticket->find($id)) {
         return back();
     }
- 
+
     $traffic_ticket->state = "off";
 $traffic_ticket->save();
 

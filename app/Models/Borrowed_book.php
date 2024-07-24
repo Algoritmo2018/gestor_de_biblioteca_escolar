@@ -41,4 +41,13 @@ class Borrowed_book extends Model
      public function book_return(): HasMany{
         return $this->hasMany(Book_return::class);
      }
+
+      //Para eliminar os dados em cascata tabela users e tabela comments
+    public static function booted()
+    {
+        static::deleting(function (Borrowed_book $borrowed_book) {
+            $borrowed_book->traffic_ticket()->delete();
+            $borrowed_book->book_return()->delete();
+        });
+    }
 }
