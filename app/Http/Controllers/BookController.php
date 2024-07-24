@@ -41,6 +41,7 @@ $publishing_company = $publishing_company->orderBy('publishing_company', 'asc')-
     }
 
     public function show(string|int $id, author $author, category $category, Publishing_company $publishing_company, Book $book){
+
  // Para trazer todos os livros do banco de dados com as suas categorias
  $book = $book->with('category');
   // Para trazer todos os livros do banco de dados com os seus autores
@@ -49,7 +50,10 @@ $publishing_company = $publishing_company->orderBy('publishing_company', 'asc')-
  $book = $book->with('publishing_company');
  //Livros por id
 $book = $book->where('id',$id)->first();
-return view('show_book', compact('book'));
+
+$author = $author->orderBy('author', 'asc')->get();
+$category = $category->orderBy('category', 'asc')->get();
+return view('show_book', compact('book','category','author'));
     }
     public function edit(category $category, author $author, Publishing_company $publishing_company, string|int $id, Book $book)
     {
