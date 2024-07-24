@@ -29,11 +29,11 @@ class TrafficTicketController extends Controller
  $valor = $request->input('student_id');
  if (!empty($valor)) {
 
-    $student = $student->where('name', 'like', "%{$valor}%")->orderBy('name', 'asc')->first();
-    $traffic_ticket = $student->traffic_ticket;
+     $student = $student->where('name', 'like', "%{$valor}%")->orderBy('name', 'asc')->first();
+     $traffic_ticket = $student->traffic_ticket;
      session()->flash('sucess', 'Resultado da pesquisa:');
  } else {
-        $traffic_ticket = $traffic_ticket->get();
+        $traffic_ticket = $traffic_ticket->orderBy('state', 'desc')->get();
  }
         $borrowed_book = $borrowed_book->orderBy('return_date', 'asc')->get();
         $student = $student->orderBy('name', 'asc')->get();

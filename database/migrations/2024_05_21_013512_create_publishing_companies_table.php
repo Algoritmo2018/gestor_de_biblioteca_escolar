@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('publishing_companies', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('publishing_company');
+            $table->string('publishing_company')->unique();
             $table->timestamps();
         });
     }

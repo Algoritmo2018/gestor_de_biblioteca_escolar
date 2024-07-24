@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('authors', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('author');
+            $table->string('author')->unique();
             $table->timestamps();
         });
     }

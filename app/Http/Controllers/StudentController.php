@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
- 
+
+use App\Http\Requests\StoreStudentRequest;
+use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -15,7 +17,7 @@ class StudentController extends Controller
         return view('student/create', compact('course'));
     }
 
-    public function store(Student $student, Request $request)
+    public function store(Student $student, StoreStudentRequest $request)
     {
 
         $data = $request->all();
@@ -36,7 +38,7 @@ class StudentController extends Controller
         return view('student/edit', compact('student', 'course'));
     }
 
-    public function update(Request $request, Student $student, string $id)
+    public function update(UpdateStudentRequest $request, Student $student, string $id)
     {
 
         //Verifica si o id do estudante existe

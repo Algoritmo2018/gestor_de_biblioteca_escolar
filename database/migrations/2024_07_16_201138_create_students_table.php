@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->text('type');
             $table->uuid('course_id')->index()->nullable();
-            $table->text('bi');
+            $table->text('bi')->unique();
             $table->text('residence');
             $table->text('contact');
-            $table->text('email');
+            $table->text('email')->unique();
             $table->timestamps();
 
             $table->foreign('course_id')
