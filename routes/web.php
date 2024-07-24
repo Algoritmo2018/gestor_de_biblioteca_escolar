@@ -46,19 +46,7 @@ Route::get('/', [HomeController::class, 'index'])->name('show.home');
 
     Route::group(['middleware' => 'library_user'], function () {
 
-//Rotas do leitor
-Route::get('/create/reader', [ReaderController::class, 'create'])->name('create.reader');
-Route::post('/store/reader', [ReaderController::class, 'store'])->name('store.reader');
-
-
-Route::get('/edit/reader/{id}', [ReaderController::class, 'edit'])->name('edit.reader');
-
-
-Route::put('/{id}/update/reader/', [ReaderController::class, 'update'])->name('update.reader');
-
-Route::delete('/{id}/destroy/reader/', [ReaderController::class, 'destroy'])->name('destroy.reader');
-
-Route::get('/all/reader', [ReaderController::class, 'all'])->name('all.reader');
+ 
 
 // Routes of borrowed_book_rating
 

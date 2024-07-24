@@ -31,13 +31,15 @@
           <main class="content px-3 py-2">
             <div class="container d-flex  justify-content-center mt-3 mb-2">
 
-                <form action="{{ route('all.student') }}" method="GET">
+                <form action="{{ route('all.loan.book') }}" method="GET">
                     @csrf
                     <div class="form-floating">
                         <div class="col-md-12 mb-1">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="course"
-                                    id="validationDefaultUsername" placeholder="Ex: arte"  aria-describedby="inputGroupPrepend2" >
+                                <input type="text" class="form-control" name="book_title"
+                                    id="validationDefaultUsername" placeholder="Ex: Matemática 3"  aria-describedby="inputGroupPrepend2" >
+                                    <input type="text" class="form-control" name="student_name"
+                                        id="validationDefaultUsername" placeholder="Ex: Chilembo"  aria-describedby="inputGroupPrepend2" >
                     <button class="btn btn-primary" type="submit">Pesquisar</button>
                             </div>
                         </div>
