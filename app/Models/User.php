@@ -46,10 +46,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function borrowed_book(): HasMany{
-        return $this->hasMany(Borrowed_book::class);
+    public function library_information(): HasMany{
+        return $this->hasMany(LibraryInformation::class);
      }
-     public function book_return(): HasMany{
-         return $this->hasMany(Book_return::class);
-      }
+
+     //Para eliminar os dados em cascata tabela user e library_information
+    public static function booted()
+    {
+        static::deleting(function (User $user) {
+            $user->library_information()->delete();
+        });
+    }
+
 }

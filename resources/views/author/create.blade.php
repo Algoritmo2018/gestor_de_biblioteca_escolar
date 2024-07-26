@@ -41,6 +41,9 @@
                                         aria-describedby="inputGroupPrepend2" name="author" value="{{ old('author') }}"
                                         required>
                                 </div>
+                                <div class="col-12 error_one" style="color: rgb(161, 8, 8)">
+                                    <x-input-error :messages="$errors->get('author')"   class="mt-1" />
+                                    </div>
                                 <!--Apresenta mensagem de erro-->
                                 @include('partials/error')
                                 <!--fim Apresenta mensagem de erro-->

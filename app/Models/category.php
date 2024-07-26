@@ -15,7 +15,17 @@ class category extends Model
         'category'
     ];
 
+
     public function book(): HasMany{
-        return $this->hasMany(book::class);
+        return $this->hasMany(Book::class);
      }
+
+
+     //Para eliminar os dados em cascata tabela Category e book
+    public static function booted()
+    {
+        static::deleting(function (category $category) {
+            $category->book()->delete();
+        });
+    }
 }

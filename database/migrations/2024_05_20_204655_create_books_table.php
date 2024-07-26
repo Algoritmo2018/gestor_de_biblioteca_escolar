@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('title');
-            $table->uuid('author_id')->index()->nullable();
-            $table->uuid('category_id')->index()->nullable();
-            $table->uuid('publishing_company_id')->index()->nullable();
+            $table->uuid('author_id')->index();
+            $table->uuid('category_id')->index();
+            $table->uuid('publishing_company_id')->index();
             $table->integer('number_of_copies');
             $table->integer('year_of_publication');
             $table->text('image_path');
@@ -24,15 +24,15 @@ return new class extends Migration
 
             $table->foreign('category_id')
             ->references('id')
-            ->on('categories');
+            ->on('categories')->onDelete('cascade');
 
             $table->foreign('author_id')
             ->references('id')
-            ->on('authors');
+            ->on('authors')->onDelete('cascade');
 
             $table->foreign('publishing_company_id')
             ->references('id')
-            ->on('publishing_companies');
+            ->on('publishing_companies')->onDelete('cascade');
 
         });
     }
@@ -43,6 +43,7 @@ return new class extends Migration
     public function down(): void
     {
 
+        Schema::dropIfExists('book_returns');
         Schema::dropIfExists('borrowed_books');
         Schema::dropIfExists('books');
     }

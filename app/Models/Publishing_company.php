@@ -16,6 +16,15 @@ class Publishing_company extends Model
     ];
 
     public function book(): HasMany{
-        return $this->hasMany(book::class);
+        return $this->hasMany(Book::class);
      }
+
+
+     //Para eliminar os dados em cascata tabela Publishing_company e book
+    public static function booted()
+    {
+        static::deleting(function (Publishing_company $publishing_company) {
+            $publishing_company->book()->delete();
+        });
+    }
 }

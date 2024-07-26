@@ -18,6 +18,15 @@ class author extends Model
 
 
     public function book(): HasMany{
-        return $this->hasMany(book::class);
+        return $this->hasMany(Book::class);
      }
+
+
+     //Para eliminar os dados em cascata tabela Autor e book
+    public static function booted()
+    {
+        static::deleting(function (author $author) {
+            $author->book()->delete();
+        });
+    }
 }

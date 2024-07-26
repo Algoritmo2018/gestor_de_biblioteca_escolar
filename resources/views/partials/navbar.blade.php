@@ -44,11 +44,23 @@
     <div class="offcanvas-header d-flex justify-content-end">
       <button class="btn-close btn btn-light" data-bs-dismiss="offcanvas"></button>
     </div>
+    <div class="d-flex flex-column ms-3">
+        <h5 class="offcanvas-title mb-2">Links</h5>
 
+
+         <ul class="pagination d-flex flex-column justify-content-start ">
+
+          <li class="page-item mb-2">
+              <a href="{{route('show.admin')}}" class="text-white" target="blank">Area adm</a>
+
+          </li>
+
+        </ul>
+        </div>
     <div class="offcanvas-header">
       <h5 class="offcanvas-title">Categorias</h5>
     </div>
-    <div style="margin-bottom: -13px;"></div>
+    <div style="margin-bottom: -25px;"></div>
     <div class="offcanvas-body">
        <ul class="pagination d-flex flex-column justify-content-start ">
         @foreach($category as $category2)
