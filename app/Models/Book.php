@@ -41,4 +41,12 @@ class Book extends Model
      public function book_return(): HasMany{
         return $this->hasMany(Book_return::class);
      }
+
+ //Para eliminar os dados em cascata tabela borrowed_book,traffic_ticket,book_return e tabela book
+  public static function booted()
+  {
+      static::deleting(function (Book $book) {
+          $book->borrowed_book()->delete();
+      });
+  }
 }

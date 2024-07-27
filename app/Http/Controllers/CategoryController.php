@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateCategoryRequest;
+use App\Models\Book;
 use App\Models\category;
 use Illuminate\Http\Request;
 
@@ -59,10 +60,16 @@ return view('category/all', compact('category'));
 
     public function destroy(Category $category, string|int $id)
     {
+
         if (!$category = $category->find($id)) {
             return back();
         }
-
+//Elimina uma categoria todos os livros que estão associados a essa categoria e elimina todos os emprestimos referenciados a este livro
+$books = $category->book;
+foreach ($books as $book) {
+    $book->borrowed_book()->delete();
+    $book->delete();
+}
         $category->delete();
         session()->flash('sucess', 'Categoria deletada com sucesso');
         return redirect()->route('all.category');

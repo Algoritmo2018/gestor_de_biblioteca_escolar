@@ -38,13 +38,11 @@ class Student extends Model
      }
 
 
-    //   //Para eliminar os dados em cascata tabela borrowed_book,traffic_ticket,book_return e tabela student
-    // public static function booted()
-    // {
-    //     static::deleting(function (Student $student) {
-    //         $student->borrowed_book()->delete();
-    //         $student->traffic_ticket()->delete();
-    //         $student->book_return()->delete();
-    //     });
-    // }
+ //Para eliminar os dados em cascata tabela borrowed_book,traffic_ticket,book_return e tabela student
+  public static function booted()
+  {
+      static::deleting(function (Student $student) {
+          $student->borrowed_book()->delete();
+      });
+  }
 }

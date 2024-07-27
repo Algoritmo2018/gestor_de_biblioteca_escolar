@@ -49,10 +49,17 @@ class User extends Authenticatable
     public function library_information(): HasMany{
         return $this->hasMany(LibraryInformation::class);
      }
+     public function borrowed_book(): HasMany{
+        return $this->hasMany(Borrowed_book::class);
+     }
 
      //Para eliminar os dados em cascata tabela user e library_information
     public static function booted()
     {
+
+        static::deleting(function (User $user) {
+            $user->borrowed_book()->delete();
+        });
         static::deleting(function (User $user) {
             $user->library_information()->delete();
         });
