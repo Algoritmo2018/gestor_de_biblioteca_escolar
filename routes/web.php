@@ -46,7 +46,7 @@ Route::get('/', [HomeController::class, 'index'])->name('show.home');
 
     Route::group(['middleware' => 'library_user'], function () {
 
- 
+
 
 // Routes of borrowed_book_rating
 
@@ -75,7 +75,7 @@ Route::post('/store/loan/book/student/', [BorrowedBookController::class, 'store'
 
 Route::get('/all/loan/book/student/', [BorrowedBookController::class, 'all'])->name('all.loan.book');
 
-Route::delete('/{id}/destroy/loan/book/student/', [LibraryInformationController::class, 'destroy'])->name('destroy.loan.book');
+Route::delete('/{id}/destroy/loan/book/student/', [BorrowedBookController::class, 'destroy'])->name('destroy.loan.book');
 
 //Routes of library
 

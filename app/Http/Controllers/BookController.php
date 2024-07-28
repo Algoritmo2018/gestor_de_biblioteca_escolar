@@ -115,6 +115,12 @@ if (!empty($dados['image_path_new'])) {
         if (!$book = $book->find($id)) {
             return back();
         }
+          //Elimina um autor todos os livros que estão associados a esse autor e elimina todos os emprestimos referenciados a este livro
+          $borrowed_books = $book->borrowed_book;
+          foreach ($borrowed_books as $borrowed_book) {
+              $borrowed_book->book_return()->delete();
+              $borrowed_book->delete();
+          }
         //Delecta a imagem no banco de dados
         $book->delete();
 

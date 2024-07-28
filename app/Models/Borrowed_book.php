@@ -45,8 +45,7 @@ class Borrowed_book extends Model
       //Para eliminar os dados em cascata tabela users e tabela comments
     public static function booted()
     {
-        static::deleting(function (Borrowed_book $borrowed_book) {
-            $borrowed_book->traffic_ticket()->delete();
+        static::deleting(function (Borrowed_book $borrowed_book) { 
             $borrowed_book->book_return()->delete();
         });
     }
