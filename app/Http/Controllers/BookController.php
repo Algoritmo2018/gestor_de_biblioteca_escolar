@@ -16,14 +16,15 @@ class BookController extends Controller
     public function create(category $category, author $author, Publishing_company $publishing_company)
     {
 
-$author = $author->orderBy('author', 'asc')->get();
-$category = $category->orderBy('category', 'asc')->get();
-$publishing_company = $publishing_company->orderBy('publishing_company', 'asc')->get();
+        $author = $author->orderBy('author', 'asc')->get();
+        $category = $category->orderBy('category', 'asc')->get();
+        $publishing_company = $publishing_company->orderBy('publishing_company', 'asc')->get();
 
-        return view('book/create', compact('category','author', 'publishing_company'));
+        return view('book/create', compact('category', 'author', 'publishing_company'));
     }
 
-    public function store(StoreUpdateBookRequest $request){
+    public function store(StoreUpdateBookRequest $request)
+    {
         $imagePath = $request->file('image_path')->store('public/img/book_cap');
 
         $image = new Book([
@@ -40,20 +41,21 @@ $publishing_company = $publishing_company->orderBy('publishing_company', 'asc')-
         return redirect()->route('create.book');
     }
 
-    public function show(string|int $id, author $author, category $category, Publishing_company $publishing_company, Book $book){
+    public function show(string|int $id, author $author, category $category, Publishing_company $publishing_company, Book $book)
+    {
 
- // Para trazer todos os livros do banco de dados com as suas categorias
- $book = $book->with('category');
-  // Para trazer todos os livros do banco de dados com os seus autores
-  $book = $book->with('author');
-   // Para trazer todos os livros do banco de dados e as editoras
- $book = $book->with('publishing_company');
- //Livros por id
-$book = $book->where('id',$id)->first();
+        // Para trazer todos os livros do banco de dados com as suas categorias
+        $book = $book->with('category');
+        // Para trazer todos os livros do banco de dados com os seus autores
+        $book = $book->with('author');
+        // Para trazer todos os livros do banco de dados e as editoras
+        $book = $book->with('publishing_company');
+        //Livros por id
+        $book = $book->where('id', $id)->first();
 
-$author = $author->orderBy('author', 'asc')->get();
-$category = $category->orderBy('category', 'asc')->get();
-return view('show_book', compact('book','category','author'));
+        $author = $author->orderBy('author', 'asc')->get();
+        $category = $category->orderBy('category', 'asc')->get();
+        return view('show_book', compact('book', 'category', 'author'));
     }
     public function edit(category $category, author $author, Publishing_company $publishing_company, string|int $id, Book $book)
     {
@@ -64,49 +66,49 @@ return view('show_book', compact('book','category','author'));
         $category = $category->orderBy('category', 'asc')->get();
         $publishing_company = $publishing_company->orderBy('publishing_company', 'asc')->get();
 
-                return view('book/edit', compact('category','author', 'publishing_company', 'book'));
+        return view('book/edit', compact('category', 'author', 'publishing_company', 'book'));
     }
 
     public function update(string|int $id, Request $request, Book $book)
     {
-if (!$book = $book->find($id)) {
-    return back();
-}
+        if (!$book = $book->find($id)) {
+            return back();
+        }
 
-$dados = $request->all();
+        $dados = $request->all();
 
-if (!empty($dados['image_path_new'])) {
-    //Apaga a imagem antiga
-    File::delete('storage/img/book_cap/' . $dados['image_path']);
+        if (!empty($dados['image_path_new'])) {
+            //Apaga a imagem antiga
+            File::delete('storage/img/book_cap/' . $dados['image_path']);
 
-    //Faz o upload da imagem inserida na input file
-    $imagePath = $request->file('image_path_new')->store('public/img/book_cap');
+            //Faz o upload da imagem inserida na input file
+            $imagePath = $request->file('image_path_new')->store('public/img/book_cap');
 
-     //Faz o update do Livro com a nova imagem
-     $book->title = $dados['title'];
-     $book->author_id = $dados['author'];
-     $book->category_id = $dados['category'];
-     $book->publishing_company_id = $dados['publishing_company'];
-     $book->number_of_copies = $dados['number_of_copies'];
-     $book->year_of_publication = $dados['year_of_publication'];
-     $book->image_path = $request->file('image_path_new')->hashName();
-     $book->save();
-} else {
-
-
-     //Faz o update do Livro
-     $book->title = $dados['title'];
-     $book->author_id = $dados['author'];
-     $book->category_id = $dados['category'];
-     $book->publishing_company_id = $dados['publishing_company'];
-     $book->number_of_copies = $dados['number_of_copies'];
-     $book->year_of_publication = $dados['year_of_publication'];
-     $book->save();
-}
+            //Faz o update do Livro com a nova imagem
+            $book->title = $dados['title'];
+            $book->author_id = $dados['author'];
+            $book->category_id = $dados['category'];
+            $book->publishing_company_id = $dados['publishing_company'];
+            $book->number_of_copies = $dados['number_of_copies'];
+            $book->year_of_publication = $dados['year_of_publication'];
+            $book->image_path = $request->file('image_path_new')->hashName();
+            $book->save();
+        } else {
 
 
- session()->flash('sucess', 'Livro editado com sucesso');
- return redirect()->route('show.home');
+            //Faz o update do Livro
+            $book->title = $dados['title'];
+            $book->author_id = $dados['author'];
+            $book->category_id = $dados['category'];
+            $book->publishing_company_id = $dados['publishing_company'];
+            $book->number_of_copies = $dados['number_of_copies'];
+            $book->year_of_publication = $dados['year_of_publication'];
+            $book->save();
+        }
+
+
+        session()->flash('sucess', 'Livro editado com sucesso');
+        return redirect()->route('show.home');
     }
 
     public function destroy(Request $request, book $book, string $id)
@@ -115,12 +117,13 @@ if (!empty($dados['image_path_new'])) {
         if (!$book = $book->find($id)) {
             return back();
         }
-          //Elimina um autor todos os livros que estão associados a esse autor e elimina todos os emprestimos referenciados a este livro
-          $borrowed_books = $book->borrowed_book;
-          foreach ($borrowed_books as $borrowed_book) {
-              $borrowed_book->book_return()->delete();
-              $borrowed_book->delete();
-          }
+        //Elimina um autor todos os livros que estão associados a esse autor e elimina todos os emprestimos referenciados a este livro
+        $borrowed_books = $book->borrowed_book;
+        foreach ($borrowed_books as $borrowed_book) {
+            $borrowed_book->traffic_ticket()->delete();
+            $borrowed_book->book_return()->delete();
+            $borrowed_book->delete();
+        }
         //Delecta a imagem no banco de dados
         $book->delete();
 
@@ -128,7 +131,7 @@ if (!empty($dados['image_path_new'])) {
         // Delecta a imagem x que esta na pasta storage/app/public/img/book_cap/
         File::delete('storage/img/book_cap/' . $request->input('image_path'));
 
-          session()->flash('sucess', 'Livro deletado com sucesso');
-         return redirect()->route('show.home');
+        session()->flash('sucess', 'Livro deletado com sucesso');
+        return redirect()->route('show.home');
     }
 }

@@ -72,6 +72,7 @@ class AuthorController extends Controller
         $books = $author->book;
         foreach ($books as $book) {
             $book->borrowed_book()->each(function ($borrowed_book) {
+                $borrowed_book->traffic_ticket()->delete();
                 $borrowed_book->book_return()->delete();
             });
             //Apaga a imagem do livro

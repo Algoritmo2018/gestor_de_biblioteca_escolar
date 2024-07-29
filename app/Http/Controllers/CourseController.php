@@ -65,6 +65,7 @@ return view('course/all', compact('course'));
         $students = $course->student;
         foreach ($students as $student) {
             $student->borrowed_book()->each(function ($borrowed_book) {
+                $borrowed_book->traffic_ticket()->delete();
                 $borrowed_book->book_return()->delete();
             });
             $student->delete();

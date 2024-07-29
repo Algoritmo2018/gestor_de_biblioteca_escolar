@@ -43,6 +43,7 @@ class Student extends Model
   {
     static::deleting(function (Student $student) {
 
+        $student->traffic_ticket()->delete();
         $student->book_return()->delete();
         $student->borrowed_book()->delete();
 

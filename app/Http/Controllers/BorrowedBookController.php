@@ -91,11 +91,7 @@ class BorrowedBookController extends Controller
             session()->flash('sucess', 'Resultado da pesquisa:');
         } else {
             //Traz todos os livros emprestados que ainda estão cadastrados na tabela de multas
-            $borrowed_book = $borrowed_book->query()
-                ->with('traffic_ticket')  // Carregamento antecipado de modelos relacionados
-                ->whereDoesntHave('traffic_ticket', function ($query) use ($book_title) {
-                    $query->orderBy('borrowed_book_id', 'desc');
-                })
+            $borrowed_book = $borrowed_book
                 ->orderBy('return_date', 'asc')
                 ->get();
         }
