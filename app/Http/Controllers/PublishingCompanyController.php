@@ -66,10 +66,12 @@ class PublishingCompanyController extends Controller
         }
 
 
-        //Elimina um editora todos os livros que estão associados a esse editora e elimina todos os emprestimos referenciados a este livro
+        //Elimina uma editora todos os livros que estão associados a esse editora e elimina todos os emprestimos referenciados a este livro e todos os registros de livros devolvidos
         $books = $publishing_company->book;
         foreach ($books as $book) {
-            $book->borrowed_book()->delete();
+            $book->borrowed_book()->each(function ($borrowed_book) {
+                $borrowed_book->book_return()->delete();
+            });
             $book->delete();
         }
 
