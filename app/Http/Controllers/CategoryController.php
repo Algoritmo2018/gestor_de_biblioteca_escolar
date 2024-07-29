@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUpdateCategoryRequest;
 use App\Models\Book;
 use App\Models\category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use App\Http\Requests\StoreUpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -70,6 +71,8 @@ foreach ($books as $book) {
     $book->borrowed_book()->each(function ($borrowed_book) {
         $borrowed_book->book_return()->delete();
     });
+//Apaga a imagem do livro
+    File::delete('storage/img/book_cap/' . $book->image_path);
     $book->delete();
 }
         $category->delete();

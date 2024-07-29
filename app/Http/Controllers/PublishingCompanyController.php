@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUpdatePublishing_companyRequest;
-use App\Models\Publishing_company;
 use Illuminate\Http\Request;
+use App\Models\Publishing_company;
+use Illuminate\Support\Facades\File;
+use App\Http\Requests\StoreUpdatePublishing_companyRequest;
 
 class PublishingCompanyController extends Controller
 {
@@ -72,6 +73,8 @@ class PublishingCompanyController extends Controller
             $book->borrowed_book()->each(function ($borrowed_book) {
                 $borrowed_book->book_return()->delete();
             });
+//Apaga a imagem do livro
+    File::delete('storage/img/book_cap/' . $book->image_path);
             $book->delete();
         }
 

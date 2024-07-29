@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\StoreUpdateAuthorRequest;
 use App\Models\author;
 use Illuminate\Http\Request;
@@ -72,6 +74,8 @@ class AuthorController extends Controller
             $book->borrowed_book()->each(function ($borrowed_book) {
                 $borrowed_book->book_return()->delete();
             });
+            //Apaga a imagem do livro
+                File::delete('storage/img/book_cap/' . $book->image_path);
             $book->delete();
         }
         $author->delete();
