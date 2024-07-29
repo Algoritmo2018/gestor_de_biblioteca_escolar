@@ -67,7 +67,9 @@ return view('category/all', compact('category'));
 //Elimina uma categoria todos os livros que estão associados a essa categoria e elimina todos os emprestimos referenciados a este livro
 $books = $category->book;
 foreach ($books as $book) {
-    $book->borrowed_book()->delete();
+    $book->borrowed_book()->each(function ($borrowed_book) {
+        $borrowed_book->book_return()->delete();
+    });
     $book->delete();
 }
         $category->delete();

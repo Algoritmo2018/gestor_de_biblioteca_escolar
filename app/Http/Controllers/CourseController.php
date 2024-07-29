@@ -62,6 +62,13 @@ return view('course/all', compact('course'));
         if (!$course = $course->find($id)) {
             return back();
         }
+        $students = $course->student;
+        foreach ($students as $student) {
+            $student->borrowed_book()->each(function ($borrowed_book) {
+                $borrowed_book->book_return()->delete();
+            });
+            $student->delete();
+        }
 
         $course->delete();
         session()->flash('sucess', 'Curso deletada com sucesso');
