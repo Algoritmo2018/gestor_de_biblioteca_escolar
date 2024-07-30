@@ -77,6 +77,9 @@
                                                 @slot('route')
                                                     {{ route('destroy.publishing_company', $publishing_company->id) }}
                                                 @endslot
+                                                @slot('elements')
+
+                                                @endslot
                                             @endcomponent
                                     </td>
                                 </tr>

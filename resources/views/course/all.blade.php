@@ -77,6 +77,9 @@
                                             @slot('route')
                                                 {{ route('destroy.course', $course->id) }}
                                             @endslot
+                                            @slot('elements')
+
+                                                @endslot
                                         @endcomponent
                                     </td>
                                 </tr>

@@ -87,6 +87,9 @@
                                             @slot('route')
                                                 {{ route('destroy.student', $student->id) }}
                                             @endslot
+                                            @slot('elements')
+
+                                                @endslot
                                         @endcomponent
                                     </td>
                                 </tr>

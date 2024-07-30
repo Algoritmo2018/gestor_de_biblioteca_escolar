@@ -75,6 +75,9 @@
                                             @slot('route')
                                                 {{ route('destroy.category', $category->id) }}
                                             @endslot
+                                            @slot('elements')
+
+                                                @endslot
                                         @endcomponent
                                     </td>
                                 </tr>

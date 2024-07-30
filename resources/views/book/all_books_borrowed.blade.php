@@ -123,7 +123,7 @@
                                     </td>
 
                                     <td>
-                                        
+
                                             <a data-bs-toggle="modal" data-bs-target="#delete-{{ $borrowed_book->id }}"
                                                 class="text-danger">Eliminar</a>
                                                 @component('components.modal_delete')
@@ -132,6 +132,9 @@
                                                 @endslot
                                                 @slot('route')
                                                     {{ route('destroy.loan.book', $borrowed_book->id) }}
+                                                @endslot
+                                                @slot('elements')
+                                                
                                                 @endslot
                                             @endcomponent
                                     </td>

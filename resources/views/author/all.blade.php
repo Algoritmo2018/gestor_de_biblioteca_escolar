@@ -73,6 +73,9 @@
                         @slot('route')
                             {{ route('destroy.author', $author->id) }}
                         @endslot
+                        @slot('elements')
+
+                                                @endslot
                     @endcomponent</td>
                   </tr>
                   @endforeach
