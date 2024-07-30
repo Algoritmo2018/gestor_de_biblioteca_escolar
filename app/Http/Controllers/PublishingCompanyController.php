@@ -74,8 +74,8 @@ class PublishingCompanyController extends Controller
                 $borrowed_book->traffic_ticket()->delete();
                 $borrowed_book->book_return()->delete();
             });
-//Apaga a imagem do livro
-    File::delete('storage/img/book_cap/' . $book->image_path);
+            //Apaga a imagem do livro
+            File::delete('storage/img/book_cap/' . $book->image_path);
             $book->delete();
         }
 

@@ -18,7 +18,7 @@ class BorrowedBookRatingController extends Controller
         return view('book/statistic', compact('book', 'borrowed_book'));
     }
 
-public function graphic( Book $book,)
+    public function graphic(Book $book,)
     {
         //Traz o total de emprestimos de cada livro com os seus respectivos dados
         $book = $book->withCount('Borrowed_book')->orderBy('borrowed_book_count', 'desc')->get();

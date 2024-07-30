@@ -64,11 +64,16 @@
 
                     <td>{{$author->author}}</td>
                     <td><a href="{{route('edit.author', $author->id)}}" class="text-primary">Editar</a></td>
-                    <td><form action="{{ route('destroy.author', $author->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <a  onclick="event.preventDefault();
-                            this.closest('form').submit();" class="text-danger">Eliminar</a></form></td>
+                    <td>
+                        <a  class="text-danger" data-link-id="{{$author->id}}" data-bs-toggle="modal" data-bs-target="#delete-{{$author->id}}">Eliminar</a>
+                        @component('components.modal_delete')
+                        @slot('id')
+                            {{ $author->id }}
+                        @endslot
+                        @slot('route')
+                            {{ route('destroy.author', $author->id) }}
+                        @endslot
+                    @endcomponent</td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -79,6 +84,7 @@
 
           </a>
         </div>
-      </div></body>
+      </div>
+</body>
 
 </html>

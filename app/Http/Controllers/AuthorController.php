@@ -76,7 +76,7 @@ class AuthorController extends Controller
                 $borrowed_book->book_return()->delete();
             });
             //Apaga a imagem do livro
-                File::delete('storage/img/book_cap/' . $book->image_path);
+            File::delete('storage/img/book_cap/' . $book->image_path);
             $book->delete();
         }
         $author->delete();

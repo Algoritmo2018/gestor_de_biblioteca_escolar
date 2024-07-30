@@ -77,13 +77,17 @@
                                     <td><a href="{{ route('edit.student', $student->id) }}"
                                             class="text-primary">Editar</a></td>
                                     <td>
-                                        <form action="{{ route('destroy.student', $student->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <a onclick="event.preventDefault();
-                            this.closest('form').submit();"
-                                                class="text-danger">Eliminar</a>
-                                        </form>
+
+                                        <a data-bs-toggle="modal" data-bs-target="#delete-{{ $student->id }}"
+                                            class="text-danger">Eliminar</a>
+                                        @component('components.modal_delete')
+                                            @slot('id')
+                                                {{ $student->id }}
+                                            @endslot
+                                            @slot('route')
+                                                {{ route('destroy.student', $student->id) }}
+                                            @endslot
+                                        @endcomponent
                                     </td>
                                 </tr>
                             @endforeach

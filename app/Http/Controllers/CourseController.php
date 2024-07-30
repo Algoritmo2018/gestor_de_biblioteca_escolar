@@ -22,39 +22,41 @@ class CourseController extends Controller
         return redirect()->route('create.course');
     }
 
-public function edit(Course $course, string|int $id)
-{
-    if (!$course = $course->where('id', $id)->first()) {
-        return back();
-    }
-    return view('course/edit', compact('course'));
-}
-
-public function update(StoreUpdateCourseRequest $request, Course $course, string $id){
-
-    if (!$course = $course->find($id)) {
-        return back();
+    public function edit(Course $course, string|int $id)
+    {
+        if (!$course = $course->where('id', $id)->first()) {
+            return back();
+        }
+        return view('course/edit', compact('course'));
     }
 
-    $course = $course->update($request->only([
-        'course'
-    ]));
-    session()->flash('sucess', 'Curso editada com sucesso');
+    public function update(StoreUpdateCourseRequest $request, Course $course, string $id)
+    {
 
-    return redirect()->route('all.course');
-}
+        if (!$course = $course->find($id)) {
+            return back();
+        }
 
-    public function all(Course $course, Request $request){
-          //Si não existir valor a ser pesquisado traz todos as salas cadastradas
-          $valor = $request->input('course');
-          if (!empty($valor)) {
-              $course = $course->where('course', 'like', "%{$valor}%")->orderBy('course', 'asc')->get();
-              session()->flash('sucess', 'Resultado da pesquisa:');
-          } else {
-$course = $course->orderBy('course', 'asc')->get();
-          }
+        $course = $course->update($request->only([
+            'course'
+        ]));
+        session()->flash('sucess', 'Curso editada com sucesso');
 
-return view('course/all', compact('course'));
+        return redirect()->route('all.course');
+    }
+
+    public function all(Course $course, Request $request)
+    {
+        //Si não existir valor a ser pesquisado traz todos as salas cadastradas
+        $valor = $request->input('course');
+        if (!empty($valor)) {
+            $course = $course->where('course', 'like', "%{$valor}%")->orderBy('course', 'asc')->get();
+            session()->flash('sucess', 'Resultado da pesquisa:');
+        } else {
+            $course = $course->orderBy('course', 'asc')->get();
+        }
+
+        return view('course/all', compact('course'));
     }
 
     public function destroy(Course $course, string|int $id)
