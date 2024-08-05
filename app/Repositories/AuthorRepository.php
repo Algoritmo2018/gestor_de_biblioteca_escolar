@@ -19,7 +19,7 @@ class AuthorRepository
         return $this->author->where(function ($query) use ($filter) {
 
             if ($filter !== '') {
-                $query->where('name', 'LIKE', "%{$filter}%");
+                $query->where('author', 'LIKE', "%{$filter}%");
             }
         })->paginate($totalPerPage, ['*'], 'page', $page);
     }

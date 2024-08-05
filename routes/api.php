@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\Api\AuthorController;
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
+
+//Routes categorie
+Route::apiResource('/categories', CategoryController::class);
 
 //Routes author
 Route::apiResource('/authors', AuthorController::class);
