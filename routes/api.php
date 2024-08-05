@@ -2,8 +2,12 @@
 
 use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
+
+//Routes courses
+Route::apiResource('/courses', CourseController::class);
 
 //Routes categorie
 Route::apiResource('/categories', CategoryController::class);
