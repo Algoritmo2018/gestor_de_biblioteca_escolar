@@ -3,9 +3,12 @@
 use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\Api\PublishingCompanyController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
+//Routes PublishingCompany
+Route::apiResource('/PublishingCompanies', PublishingCompanyController::class);
 //Routes courses
 Route::apiResource('/courses', CourseController::class);
 

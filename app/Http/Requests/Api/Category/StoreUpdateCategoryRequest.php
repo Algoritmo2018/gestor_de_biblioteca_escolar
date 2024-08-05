@@ -24,6 +24,7 @@ class StoreUpdateCategoryRequest extends FormRequest
         $rules = [
             'category' => [
                 'required',
+                'min:1',
                 'max:255',
                 'unique:categories',
             ]

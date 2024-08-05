@@ -24,6 +24,7 @@ class StoreUpdateAuthorRequest extends FormRequest
         $rules = [
             'author' => [
                 'required',
+                'min:1',
                 'max:255',
                 'unique:authors',
             ]

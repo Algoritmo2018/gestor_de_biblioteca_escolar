@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Api\Course;
+namespace App\Http\Requests\Api\PublishingCompany;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUpdateCourseRequest extends FormRequest
+class StoreUpdatePublishingCompanyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,11 @@ class StoreUpdateCourseRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'course' => [
+            'publishing_company' => [
                 'required',
                 'min:1',
                 'max:255',
-                'unique:courses',
+                'unique:publishing_companies',
             ]
         ];
 
