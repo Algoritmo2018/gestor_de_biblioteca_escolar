@@ -1,18 +1,22 @@
 <?php
 
 use App\Http\Controllers\Api\AuthorController;
+use App\Http\Controllers\Api\BookController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\PublishingCompanyController;
+use App\Http\Controllers\Api\UploadController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
-
+ 
+//Routes Books
+Route::apiResource('/books', BookController::class);
 //Routes PublishingCompany
 Route::apiResource('/PublishingCompanies', PublishingCompanyController::class);
 //Routes courses
 Route::apiResource('/courses', CourseController::class);
 
-//Routes categorie
+//Routes categories
 Route::apiResource('/categories', CategoryController::class);
 
 //Routes author
