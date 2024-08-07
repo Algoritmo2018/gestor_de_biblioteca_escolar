@@ -5,10 +5,13 @@ use App\Http\Controllers\Api\BookController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\PublishingCompanyController;
+use App\Http\Controllers\Api\StudentController;
 use App\Http\Controllers\Api\UploadController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
- 
+
+//Routes Students
+Route::apiResource('/students', StudentController::class);
 //Routes Books
 Route::apiResource('/books', BookController::class);
 //Routes PublishingCompany
