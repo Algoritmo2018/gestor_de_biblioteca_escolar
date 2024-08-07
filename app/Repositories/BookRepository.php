@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Illuminate\Support\Facades\File;
 use App\Models\Book;
 use App\DTO\Books\EditBookDTO;
 use App\DTO\Books\CreateBookDTO;
@@ -16,12 +17,19 @@ class BookRepository
 
     public function getPaginate(int $totalPerPage = 15, int $page = 1, string $filter = ''): LengthAwarePaginator
     {
-        return $this->book->where(function ($query) use ($filter) {
+        return $this->book
+        ->with('author')
+        ->with('category')
+        ->with('publishing_company')
+        ->where(function ($query) use ($filter) {
 
             if ($filter !== '') {
                 $query->where('title', 'LIKE', "%{$filter}%");
             }
-        })->paginate($totalPerPage, ['*'], 'page', $page);
+
+        })
+
+        ->paginate($totalPerPage, ['*'], 'page', $page);
     }
 
     public function createNew(CreateBookDTO $dto, string $path): Book
@@ -30,7 +38,7 @@ class BookRepository
         $data = (array) $dto;
 
           $data['image_path'] = $path;
-      
+
         return $this->book->create($data);
     }
 
@@ -39,19 +47,42 @@ class BookRepository
         return $this->book->find($id);
     }
 
-    public function update(EditBookDTO $dto): bool
+    public function update($id, $request): bool
     {
-        if (!$book = $this->findById($dto->id)) {
+        if (!$book = $this->findById($id)) {
             return false;
         }
-        $data = (array) $dto;
-        return $book->update($data);
+        if(!empty($request['title'])){
+            $book->title = $request['title'];
+        }
+        if(!empty($request['author_id'])){
+            $book->author_id = $request['author_id'];
+        }
+        if(!empty($request['category_id'])){
+            $book->category_id = $request['category_id'];
+        }
+        if(!empty($request['publishing_company_id'])){
+            $book->publishing_company_id = $request['publishing_company_id'];
+        }
+        if(!empty($request['number_of_copies'])){
+            $book->number_of_copies = $request['number_of_copies'];
+        }
+        if(!empty($request['year_of_publication'])){
+            $book->year_of_publication = $request['year_of_publication'];
+        }
+
+
+        return $book->save();
     }
     public function delete(string $id){
 
         if (!$book = $this->findById($id)) {
             return false;
         }
+
+        // Delecta a imagem x que esta na pasta storage/app/public/img/book_cap/
+        File::delete('storage/img/book_cap/' . $book->image_path);
+
         return $book->delete();
     }
 }

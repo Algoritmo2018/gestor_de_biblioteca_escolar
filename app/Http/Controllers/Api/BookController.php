@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\BookResource;
 use App\Repositories\BookRepository;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\Api\Book\UpdateBookRequest;
 use App\Http\Requests\Api\Book\StoreUpdateBookRequest;
 
 class BookController extends Controller
@@ -28,6 +29,7 @@ class BookController extends Controller
             page: $request->page ?? 1,
             filter: $request->get('filter', ''),
         );
+        
         return BookResource::collection($books);
     }
 
@@ -68,10 +70,12 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreUpdateBookRequest $request, string $id)
+    public function update(UpdateBookRequest $request, string $id)
     {
-       $response =$this->bookRepository->update(new EditBookDTO(...[$id, ...$request->validated()]));
-        if(!$response){
+
+       $response = $this->bookRepository->update($id, $request->validated());
+
+       if(!$response){
             return response()->json(['message' => 'book not found'], Response::HTTP_NOT_FOUND);
         }
         return response()->json(['message' => 'book updated with success']);
