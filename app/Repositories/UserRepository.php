@@ -31,10 +31,16 @@ class UserRepository
         return $this->user->create($data);
     }
 
-    public function findById(string $id): ?User
+    public function findById(string $email): ?User
     {
-        return $this->user->find($id);
+        return $this->user->where('email', $email)->first();
     }
+    public function findByEmail(string $email): ?User
+    {
+        return $this->user->where('email', $email)->first();
+    }
+
+
 
     public function update(EditUserDTO $dto): bool
     {

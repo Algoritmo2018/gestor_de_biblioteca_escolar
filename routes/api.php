@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\AuthApiController;
 use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\BookController;
+use App\Http\Controllers\Api\Borrowed_bookController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\PublishingCompanyController;
@@ -10,6 +12,8 @@ use App\Http\Controllers\Api\UploadController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
+//Routes Students
+Route::apiResource('/borrowed_books', Borrowed_bookController::class)->middleware('auth:sanctum');
 //Routes Students
 Route::apiResource('/students', StudentController::class);
 //Routes Books
@@ -33,4 +37,9 @@ Route::delete('/v1/users/{user}', [UserController::class, 'destroy'])->name('use
 
 Route::post('/v1/users', [UserController::class, 'store'])->name('users.store');
 
+
+Route::post('/auth', [AuthApiController::class, 'auth'])->name('auth.login');
+
+Route::post('/me', [AuthApiController::class, 'me'])->name('auth.me')->middleware('auth:sanctum');
+Route::post('/logout', [AuthApiController::class, 'logout'])->name('auth.logout')->middleware('auth:sanctum');
 Route::get('/v1', fn () => response()->json(['message' => 'ok']));
