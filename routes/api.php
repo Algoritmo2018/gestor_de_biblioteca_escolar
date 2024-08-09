@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Auth\AuthApiController;
 use App\Http\Controllers\Api\AuthorController;
+use App\Http\Controllers\Api\Book_returnController;
 use App\Http\Controllers\Api\BookController;
 use App\Http\Controllers\Api\Borrowed_bookController;
 use App\Http\Controllers\Api\CategoryController;
@@ -13,6 +14,8 @@ use App\Http\Controllers\Api\UploadController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
+//Routes Book_returns
+Route::apiResource('/Book_returns', Book_returnController::class)->middleware('auth:sanctum');
 //Routes Traffic_tickets
 Route::apiResource('/Traffic_tickets', Traffic_ticketController::class)->middleware('auth:sanctum');
 //Routes borrowed_books
