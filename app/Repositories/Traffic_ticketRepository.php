@@ -30,6 +30,20 @@ class Traffic_ticketRepository
 
         ->paginate($totalPerPage, ['*'], 'page', $page);
     }
+    public function count( string $filter = '')
+    {
+        $count = $this->traffic_ticket
+
+        ->where(function ($query) use ($filter) {
+
+            if ($filter !== '') {
+                $query->where('student_id',  $filter);
+                $query->where('state',  "on");
+            }
+
+        })->count();
+return $count;
+    }
 
     public function createNew(CreateTraffic_ticketDTO $dto): Traffic_ticket
     {

@@ -12,11 +12,12 @@ use App\Http\Requests\Api\Borrowed_book\StoreBorrowed_bookRequest;
 use App\Http\Resources\Borrowed_bookResource;
 use App\Repositories\Borrowed_bookRepository;
 use App\Http\Requests\Api\Borrowed_book\StoreUpdateBorrowed_bookRequest;
+use App\Repositories\Traffic_ticketRepository;
 
 class Borrowed_bookController extends Controller
 {
 
-    public function __construct(private Borrowed_bookRepository $borrowed_bookRepository)
+    public function __construct(private Borrowed_bookRepository $borrowed_bookRepository, private Traffic_ticketRepository $traffic_ticketRepository)
     {
     }
 
@@ -38,6 +39,17 @@ class Borrowed_bookController extends Controller
      */
     public function store(StoreBorrowed_bookRequest $request)
     {
+
+
+//Verifica si o aluno tem multas a pagar
+
+if($this->traffic_ticketRepository->count($request->student_id) > 0 ){
+    return response()->json([
+        'message' => 'loan denied, student has fine',
+        Response::HTTP_NOT_FOUND
+    ]);
+}
+// Verifica si a data de emprestimo é menor que a data atual
         $data_actual = date('Y-m-d H:i:s');
 if($request->date_borrowed < $data_actual){
     return response()->json([
