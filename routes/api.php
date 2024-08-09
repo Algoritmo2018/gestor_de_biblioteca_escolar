@@ -8,11 +8,14 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\PublishingCompanyController;
 use App\Http\Controllers\Api\StudentController;
+use App\Http\Controllers\Api\Traffic_ticketController;
 use App\Http\Controllers\Api\UploadController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
-//Routes Students
+//Routes Traffic_tickets
+Route::apiResource('/Traffic_tickets', Traffic_ticketController::class)->middleware('auth:sanctum');
+//Routes borrowed_books
 Route::apiResource('/borrowed_books', Borrowed_bookController::class)->middleware('auth:sanctum');
 //Routes Students
 Route::apiResource('/students', StudentController::class);
