@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Illuminate\Support\Facades\File;
 use App\Models\author;
 use App\DTO\Authors\CreateAuthorDTO;
 use App\DTO\Authors\EditAuthorDTO;
@@ -48,6 +49,17 @@ class AuthorRepository
         if (!$author = $this->findById($id)) {
             return false;
         }
+         //Elimina um autor todos os livros que estão associados a esse autor e elimina todos os emprestimos referenciados a este livro
+         $books = $author->book;
+         foreach ($books as $book) {
+             $book->borrowed_book()->each(function ($borrowed_book) {
+                 $borrowed_book->traffic_ticket()->delete();
+                 $borrowed_book->book_return()->delete();
+             });
+             //Apaga a imagem do livro
+             File::delete('storage/img/book_cap/' . $book->image_path);
+             $book->delete();
+         }
         return $author->delete();
     }
 }

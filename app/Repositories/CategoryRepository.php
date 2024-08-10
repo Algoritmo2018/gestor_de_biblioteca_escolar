@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Illuminate\Support\Facades\File;
 use App\Models\category;
 use App\DTO\Categories\CreateCategoryDTO;
 use App\DTO\Categories\EditCategoryDTO;
@@ -47,6 +48,16 @@ class CategoryRepository
 
         if (!$category = $this->findById($id)) {
             return false;
+        }   //Elimina uma categoria todos os livros que estão associados a essa categoria e elimina todos os emprestimos referenciados a este livro
+        $books = $category->book;
+        foreach ($books as $book) {
+            $book->borrowed_book()->each(function ($borrowed_book) {
+                $borrowed_book->traffic_ticket()->delete();
+                $borrowed_book->book_return()->delete();
+            });
+            //Apaga a imagem do livro
+            File::delete('storage/img/book_cap/' . $book->image_path);
+            $book->delete();
         }
         return $category->delete();
     }

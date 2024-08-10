@@ -56,7 +56,7 @@
                 <label class="input-group-text" for="inputGroupSelect01">Autor:</label>
               </div>
               <select class="form-select  col-md-12 rounded-2" name="author" id="inputGroupSelect01">
-                <option >Escolher...</option>
+                <option value="">Escolher...</option>
                 @foreach ($author as $author)
                 <option value="{{$author->id}}">{{$author->author}}</option>
                 @endforeach
@@ -71,7 +71,7 @@
                 <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
               </div>
               <select class="form-select  col-md-12 rounded-2" name="category" id="inputGroupSelect01">
-                <option >Escolher...</option>
+                <option value="">Escolher...</option>
                 @foreach ($category as $category)
                 <option value="{{$category->id}}">{{$category->category}}</option>
                 @endforeach
@@ -85,7 +85,7 @@
                   <label class="input-group-text" for="inputGroupSelect01">Editora:</label>
                 </div>
                 <select class="form-select  col-md-12 rounded-2" name="publishing_company" id="inputGroupSelect01">
-                  <option >Escolher...</option>
+                  <option value="">Escolher...</option>
                   @foreach ($publishing_company as $publishing_company)
                   <option value="{{$publishing_company->id}}">{{$publishing_company->publishing_company}}</option>
                   @endforeach

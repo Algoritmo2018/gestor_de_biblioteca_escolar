@@ -10,12 +10,13 @@ use App\DTO\Traffic_tickets\CreateTraffic_ticketDTO;
 use App\Http\Requests\Api\StoreTraffic_ticketRequest;
 use App\Http\Requests\Api\UpdateTraffic_ticketRequest;
 use App\Http\Resources\Traffic_ticketResource;
+use App\Repositories\Borrowed_bookRepository;
 use App\Repositories\Traffic_ticketRepository;
 
 class Traffic_ticketController extends Controller
 {
 
-    public function __construct(private Traffic_ticketRepository $traffic_ticketRepository)
+    public function __construct(private Traffic_ticketRepository $traffic_ticketRepository, private Borrowed_bookRepository $borrowed_bookRepository)
     {}
 
     /**
@@ -37,6 +38,13 @@ class Traffic_ticketController extends Controller
      */
     public function store(StoreTraffic_ticketRequest $request)
     {
+        //Data atual
+        $data_actual = date('Y-m-d H:i:s');
+//Verifica si o prazo de entrega passou da validade
+ $return_date = $this->borrowed_bookRepository->findById($request->borrowed_book_id)['return_date'];
+ if($return_date > $data_actual){
+    return response()->json(['message' => 'The return time has not been exceeded'], Response::HTTP_NOT_FOUND);
+ }
 
         $traffic_ticket = $this->traffic_ticketRepository->createNew(new CreateTraffic_ticketDTO(... $request->validated()));
         return new Traffic_ticketResource($traffic_ticket);

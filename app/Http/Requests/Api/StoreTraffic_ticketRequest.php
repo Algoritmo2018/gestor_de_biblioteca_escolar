@@ -23,9 +23,7 @@ class StoreTraffic_ticketRequest extends FormRequest
     {
         return [
             'borrowed_book_id' => 'required|unique:traffic_tickets',
-            'student_id' => 'required',
-            'debt' => 'required',
-            'state' => 'required|in:on',
+            'student_id' => 'required', 
         ];
     }
 }

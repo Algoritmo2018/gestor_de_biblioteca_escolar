@@ -79,7 +79,13 @@ class BookRepository
         if (!$book = $this->findById($id)) {
             return false;
         }
-
+  //Elimina um autor todos os livros que estão associados a esse autor e elimina todos os emprestimos referenciados a este livro
+  $borrowed_books = $book->borrowed_book;
+  foreach ($borrowed_books as $borrowed_book) {
+      $borrowed_book->traffic_ticket()->delete();
+      $borrowed_book->book_return()->delete();
+      $borrowed_book->delete();
+  }
         // Delecta a imagem x que esta na pasta storage/app/public/img/book_cap/
         File::delete('storage/img/book_cap/' . $book->image_path);
 
