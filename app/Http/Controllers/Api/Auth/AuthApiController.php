@@ -31,7 +31,7 @@ class AuthApiController extends Controller
         return response()->json(['token' => $token]);
     }
     public function me() {
-        $user = Auth::user();
+        $user = Auth::user(); 
         return new UserResource($user);
     }
 

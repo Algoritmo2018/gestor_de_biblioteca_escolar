@@ -45,6 +45,8 @@ class Kernel extends HttpKernel
         ],
         'super_user' => [ \App\Http\Middleware\SuperUser::class, ],
         'library_user' => [ \App\Http\Middleware\LibraryUser::class, ],
+        'super_user_api' => [ \App\Http\Middleware\Api\SuperUserApi::class, ],
+        'library_user_api' => [ \App\Http\Middleware\Api\LibraryUserApi::class, ],
     ];
 
     /**
@@ -56,6 +58,8 @@ class Kernel extends HttpKernel
      */
     protected $middlewareAliases = [
 
+        'super_user_api' =>  \App\Http\Middleware\Api\SuperUserApi::class,
+        'library_user_api' =>  \App\Http\Middleware\Api\LibraryUserApi::class,
         'super_user' => \App\Http\Middleware\SuperUser::class,
         'library_user' => \App\Http\Middleware\LibraryUser::class,
         'auth' => \App\Http\Middleware\Authenticate::class,

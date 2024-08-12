@@ -6,16 +6,18 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\DTO\Users\CreateUserDTO;
 use App\DTO\Users\EditUserDTO;
+use App\Http\Controllers\Api\Auth\AuthApiController;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Repositories\UserRepository;
 use App\Http\Requests\Api\StoreUserRequest;
 use App\Http\Requests\Api\UpdateUserRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
 
-    public function __construct(private UserRepository $userRepository)
+    public function __construct(private UserRepository $userRepository, private AuthApiController $authApiController)
     {}
 
     /**
@@ -35,7 +37,7 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreUserRequest $request)
-    {
+    {  
         $user = $this->userRepository->createNew(new CreateUserDTO(... $request->validated()));
         return new UserResource($user);
     }
